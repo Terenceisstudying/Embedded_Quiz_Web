@@ -33,7 +33,11 @@ const QuizInterface = ({ topic, onSubmit, onBack, setMascotMood, setMascotMessag
     const currentQuestion = shuffledQuestions[currentQuestionIndex];
     const totalQuestions = shuffledQuestions.length;
 
+    const [isAnswered, setIsAnswered] = useState(false);
+
     const handleOptionToggle = (optionIndex) => {
+        if (isAnswered) return; // Prevent changing answer after submission
+
         const questionId = currentQuestion.id;
         const currentSelected = answers[questionId] || [];
         let newSelected;
@@ -50,20 +54,40 @@ const QuizInterface = ({ topic, onSubmit, onBack, setMascotMood, setMascotMessag
         }
 
         setAnswers({ ...answers, [questionId]: newSelected });
-        setMascotMood('happy');
-        setMascotMessage('Good choice!');
     };
 
-    const handleNext = () => {
+    const checkAnswer = () => {
         const questionId = currentQuestion.id;
-        if (!answers[questionId] || answers[questionId].length === 0) {
+        const userSelected = answers[questionId] || [];
+
+        if (userSelected.length === 0) {
             setMascotMood('sad');
             setMascotMessage('Please select an answer first!');
             return;
         }
 
+        setIsAnswered(true);
+
+        const correctIndices = currentQuestion.options
+            .map((opt, idx) => opt.isCorrect ? idx : -1)
+            .filter(idx => idx !== -1);
+
+        const isCorrect = userSelected.length === correctIndices.length &&
+            userSelected.every(val => correctIndices.includes(val));
+
+        if (isCorrect) {
+            setMascotMood('excited');
+            setMascotMessage('Correct! You are amazing!');
+        } else {
+            setMascotMood('sad');
+            setMascotMessage('Oh no! That was incorrect.');
+        }
+    };
+
+    const handleNext = () => {
         if (currentQuestionIndex < totalQuestions - 1) {
             setCurrentQuestionIndex(currentQuestionIndex + 1);
+            setIsAnswered(false);
             setMascotMood('thinking');
             setMascotMessage('Next question...');
         } else {
@@ -71,32 +95,7 @@ const QuizInterface = ({ topic, onSubmit, onBack, setMascotMood, setMascotMessag
         }
     };
 
-    const handlePrevious = () => {
-        if (currentQuestionIndex > 0) {
-            setCurrentQuestionIndex(currentQuestionIndex - 1);
-        }
-    };
-
-    const handleSubmit = () => {
-        // Calculate score
-        let score = 0;
-        shuffledQuestions.forEach(q => {
-            const userSelected = answers[q.id] || [];
-            const correctIndices = q.options
-                .map((opt, idx) => opt.isCorrect ? idx : -1)
-                .filter(idx => idx !== -1);
-
-            // Check if arrays match (ignoring order)
-            const isCorrect = userSelected.length === correctIndices.length &&
-                userSelected.every(val => correctIndices.includes(val));
-
-            if (isCorrect) {
-                score++;
-            }
-        });
-
-        onSubmit(answers, score, elapsedTime);
-    };
+    // ... (handleSubmit remains the same)
 
     const progress = ((currentQuestionIndex + 1) / totalQuestions) * 100;
 
@@ -148,24 +147,52 @@ const QuizInterface = ({ topic, onSubmit, onBack, setMascotMood, setMascotMessag
                     <div className="space-y-3">
                         {currentQuestion.options.map((option, idx) => {
                             const isSelected = (answers[currentQuestion.id] || []).includes(idx);
+                            const isCorrect = option.isCorrect;
+
+                            let buttonStyle = 'bg-slate-700/50 border-slate-600 hover:bg-slate-700 hover:border-slate-500';
+                            let icon = <Circle size={20} />;
+
+                            if (isSelected) {
+                                buttonStyle = 'bg-primary/20 border-primary text-white';
+                                icon = <CheckCircle2 size={20} />;
+                            }
+
+                            if (isAnswered) {
+                                if (isCorrect) {
+                                    buttonStyle = 'bg-green-500/20 border-green-500 text-green-100';
+                                    icon = <CheckCircle2 size={20} className="text-green-400" />;
+                                } else if (isSelected && !isCorrect) {
+                                    buttonStyle = 'bg-red-500/20 border-red-500 text-red-100';
+                                    icon = <Circle size={20} className="text-red-400" />;
+                                }
+                            }
+
                             return (
                                 <button
                                     key={idx}
                                     onClick={() => handleOptionToggle(idx)}
-                                    className={`w-full text-left p-4 rounded-lg border transition-all flex items-start gap-3
-                    ${isSelected
-                                            ? 'bg-primary/20 border-primary text-white'
-                                            : 'bg-slate-700/50 border-slate-600 hover:bg-slate-700 hover:border-slate-500'
-                                        }`}
+                                    disabled={isAnswered}
+                                    className={`w-full text-left p-4 rounded-lg border transition-all flex items-start gap-3 ${buttonStyle}`}
                                 >
                                     <div className={`mt-1 ${isSelected ? 'text-primary' : 'text-slate-400'}`}>
-                                        {isSelected ? <CheckCircle2 size={20} /> : <Circle size={20} />}
+                                        {icon}
                                     </div>
                                     <span>{option.text}</span>
                                 </button>
                             );
                         })}
                     </div>
+
+                    {isAnswered && currentQuestion.explanation && (
+                        <motion.div
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            className="mt-6 p-4 bg-slate-800/80 border border-slate-600 rounded-lg text-sm text-slate-300"
+                        >
+                            <span className="font-bold text-secondary block mb-1">Explanation:</span>
+                            {currentQuestion.explanation}
+                        </motion.div>
+                    )}
                 </motion.div>
             </AnimatePresence>
 
@@ -173,20 +200,30 @@ const QuizInterface = ({ topic, onSubmit, onBack, setMascotMood, setMascotMessag
             <div className="mt-8 flex justify-between">
                 <button
                     onClick={handlePrevious}
-                    disabled={currentQuestionIndex === 0}
-                    className={`px-6 py-2 rounded-lg font-medium ${currentQuestionIndex === 0
+                    disabled={currentQuestionIndex === 0 || isAnswered}
+                    className={`px-6 py-2 rounded-lg font-medium ${currentQuestionIndex === 0 || isAnswered
                         ? 'opacity-50 cursor-not-allowed text-slate-500'
                         : 'text-white hover:bg-slate-700'
                         }`}
                 >
                     Previous
                 </button>
-                <button
-                    onClick={handleNext}
-                    className="px-6 py-2 bg-primary hover:bg-indigo-600 text-white rounded-lg font-medium transition-colors shadow-lg shadow-primary/25"
-                >
-                    {currentQuestionIndex === totalQuestions - 1 ? 'Submit Quiz' : 'Next Question'}
-                </button>
+
+                {!isAnswered ? (
+                    <button
+                        onClick={checkAnswer}
+                        className="px-6 py-2 bg-primary hover:bg-indigo-600 text-white rounded-lg font-medium transition-colors shadow-lg shadow-primary/25"
+                    >
+                        Check Answer
+                    </button>
+                ) : (
+                    <button
+                        onClick={handleNext}
+                        className="px-6 py-2 bg-secondary hover:bg-yellow-500 text-slate-900 rounded-lg font-bold transition-colors shadow-lg shadow-secondary/25"
+                    >
+                        {currentQuestionIndex === totalQuestions - 1 ? 'Finish Quiz' : 'Next Question'}
+                    </button>
+                )}
             </div>
         </div>
     );

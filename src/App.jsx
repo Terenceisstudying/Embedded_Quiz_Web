@@ -12,7 +12,7 @@ function App() {
   const [score, setScore] = useState(0);
   const [timeTaken, setTimeTaken] = useState(0);
   const [mascotMood, setMascotMood] = useState('neutral');
-  const [mascotMessage, setMascotMessage] = useState("Hi! I'm Aiko! Let's study together!");
+  const [mascotMessage, setMascotMessage] = useState("Hi! I'm Chisa! Let's ace this!");
 
   const handleTopicSelect = (topic) => {
     setSelectedTopic(topic);
