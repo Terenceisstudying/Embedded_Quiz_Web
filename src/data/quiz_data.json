@@ -862,18 +862,6 @@
           {
             "text": "\\& Bitwise AND",
             "isCorrect": false
-          },
-          {
-            "text": "\\&\\& Logical AND",
-            "isCorrect": false
-          },
-          {
-            "text": "| Bitwise OR",
-            "isCorrect": false
-          },
-          {
-            "text": "|| Logical OR",
-            "isCorrect": false
           }
         ],
         "explanation": "",
@@ -1254,19 +1242,19 @@
         "question": "A 7-bit ascii data is transmitted with 1 start bit, 1 stop bit and 1 parity bit at a baud rate of 9600. How fast is the 7-bit ascii data being transmitted?",
         "options": [
           {
-            "text": "0.115 ms",
+            "text": "115 ms",
             "isCorrect": false
           },
           {
-            "text": "1.042 ms",
+            "text": "042 ms",
             "isCorrect": true
           },
           {
-            "text": "0.104 ms",
+            "text": "104 ms",
             "isCorrect": false
           },
           {
-            "text": "1.146 ms",
+            "text": "146 ms",
             "isCorrect": false
           }
         ],
@@ -1660,7 +1648,7 @@
           },
           {
             "text": "2",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "text": "4",
@@ -1680,7 +1668,7 @@
           },
           {
             "text": "A counter that can run down or up",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "text": "An ISR that is triggered by the RTC",
@@ -1704,7 +1692,7 @@
           },
           {
             "text": "False",
-            "isCorrect": false
+            "isCorrect": true
           }
         ],
         "explanation": "",
@@ -2151,12 +2139,8 @@
       },
       {
         "id": "Embedded Operating System_4",
-        "question": "xTaskCreate(printfunction, \"AvgThread\", configMINIMAL\\_STACK\\_SIZE, NULL, TEST\\_TASK\\_PRIORITY, \\&printtask);",
+        "question": "Priority-based scheduling will occur",
         "options": [
-          {
-            "text": "Priority-based scheduling will occur",
-            "isCorrect": false
-          },
           {
             "text": "Round-robin scheduling will occur",
             "isCorrect": true
@@ -3026,7 +3010,7 @@
       },
       {
         "id": "Sensor Fusion_2",
-        "question": "Select the statement that is true for the logic interface for these devices.",
+        "question": "Select the statement that is true for the logic interface for these devices. (See image)",
         "options": [
           {
             "text": "Both these devices cannot 'talk' to each other.",
@@ -3239,11 +3223,15 @@
           {
             "text": "Displacement",
             "isCorrect": false
-          },
-          {
-            "text": "Which if the following is not typically used to detect change in a sensor?",
-            "isCorrect": false
-          },
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "Sensor Fusion_11",
+        "question": "Which if the following is not typically used to detect change in a sensor? (See image)",
+        "options": [
           {
             "text": "Material of conductive plates",
             "isCorrect": true
@@ -3262,10 +3250,10 @@
           }
         ],
         "explanation": "",
-        "multiSelect": true
+        "multiSelect": false
       },
       {
-        "id": "Sensor Fusion_11",
+        "id": "Sensor Fusion_12",
         "question": "In the context of sensor fusion by competition level, which scenario best exemplifies \"coordinated fusion\"?",
         "options": [
           {
@@ -3289,8 +3277,8 @@
         "multiSelect": false
       },
       {
-        "id": "Sensor Fusion_12",
-        "question": "The following sensor uses capacitance to detect water level. Which change in factor are we trying to detect?",
+        "id": "Sensor Fusion_13",
+        "question": "The following sensor uses capacitance to detect water level. Which change in factor are we trying to detect? (See image)",
         "options": [
           {
             "text": "Material of conductive plates",

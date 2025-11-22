@@ -24,4 +24,4 @@ dist-ssr
 *.sw?
 
 # Documentation (local only)
-docs/
+# docs/
