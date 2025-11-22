@@ -1,12 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CheckCircle2, Circle, Clock } from 'lucide-react';
 
-const QuizInterface = ({ topic, onSubmit, onBack }) => {
+const QuizInterface = ({ topic, onSubmit, onBack, setMascotMood, setMascotMessage }) => {
     // Shuffle questions if All Topics mode
-    const shuffledQuestions = topic.isAllTopics
-        ? [...topic.questions].sort(() => Math.random() - 0.5)
-        : topic.questions;
+    const shuffledQuestions = useMemo(() => {
+        return topic.isAllTopics
+            ? [...topic.questions].sort(() => Math.random() - 0.5)
+            : topic.questions;
+    }, [topic]);
 
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [answers, setAnswers] = useState({}); // { questionId: [selectedIndices] }
@@ -48,11 +50,22 @@ const QuizInterface = ({ topic, onSubmit, onBack }) => {
         }
 
         setAnswers({ ...answers, [questionId]: newSelected });
+        setMascotMood('happy');
+        setMascotMessage('Good choice!');
     };
 
     const handleNext = () => {
+        const questionId = currentQuestion.id;
+        if (!answers[questionId] || answers[questionId].length === 0) {
+            setMascotMood('sad');
+            setMascotMessage('Please select an answer first!');
+            return;
+        }
+
         if (currentQuestionIndex < totalQuestions - 1) {
             setCurrentQuestionIndex(currentQuestionIndex + 1);
+            setMascotMood('thinking');
+            setMascotMessage('Next question...');
         } else {
             handleSubmit();
         }

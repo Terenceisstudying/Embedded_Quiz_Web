@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import TopicSelection from './components/TopicSelection';
 import QuizInterface from './components/QuizInterface';
 import ResultScreen from './components/ResultScreen';
+import AnimeMascot from './components/AnimeMascot';
 import quizData from './data/quiz_data.json';
 
 function App() {
@@ -10,6 +11,8 @@ function App() {
   const [userAnswers, setUserAnswers] = useState({}); // { questionId: [selectedOptionIndices] }
   const [score, setScore] = useState(0);
   const [timeTaken, setTimeTaken] = useState(0);
+  const [mascotMood, setMascotMood] = useState('neutral');
+  const [mascotMessage, setMascotMessage] = useState("Hi! I'm Aiko! Let's study together!");
 
   const handleTopicSelect = (topic) => {
     setSelectedTopic(topic);
@@ -17,6 +20,8 @@ function App() {
     setScore(0);
     setTimeTaken(0);
     setCurrentScreen('quiz');
+    setMascotMood('thinking');
+    setMascotMessage('Good luck! You can do it!');
   };
 
   const handleQuizSubmit = (answers, calculatedScore, elapsedTime) => {
@@ -24,6 +29,18 @@ function App() {
     setScore(calculatedScore);
     setTimeTaken(elapsedTime);
     setCurrentScreen('results');
+    // Mascot mood updated in ResultScreen or here based on score
+    const percentage = (calculatedScore / (selectedTopic.questions.length || 1)) * 100;
+    if (percentage >= 80) {
+      setMascotMood('excited');
+      setMascotMessage('Wow! Perfect score!');
+    } else if (percentage >= 50) {
+      setMascotMood('happy');
+      setMascotMessage('Great job! Keep it up!');
+    } else {
+      setMascotMood('sad');
+      setMascotMessage('Don\'t worry, practice makes perfect!');
+    }
   };
 
   const handleRestart = () => {
@@ -31,6 +48,8 @@ function App() {
     setSelectedTopic(null);
     setUserAnswers({});
     setScore(0);
+    setMascotMood('neutral');
+    setMascotMessage('Ready for another round?');
   };
 
   return (
@@ -78,6 +97,8 @@ function App() {
               topic={selectedTopic}
               onSubmit={handleQuizSubmit}
               onBack={handleRestart}
+              setMascotMood={setMascotMood}
+              setMascotMessage={setMascotMessage}
             />
           )}
           {currentScreen === 'results' && selectedTopic && (
@@ -91,6 +112,7 @@ function App() {
           )}
         </main>
       </div>
+      <AnimeMascot mood={mascotMood} message={mascotMessage} />
     </div>
   );
 }
