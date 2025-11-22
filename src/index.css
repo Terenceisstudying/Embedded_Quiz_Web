@@ -22,7 +22,12 @@
 }
 
 * {
-  transition: all 0.3s ease;
+  transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+*:focus-visible {
+  outline: 2px solid #FF6B9D;
+  outline-offset: 2px;
 }
 
 body {
@@ -33,6 +38,8 @@ body {
   min-height: 100vh;
   position: relative;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* Anime-style floating particles background */
@@ -79,7 +86,7 @@ body::before {
   }
 }
 
-/* Manga-style speed lines */
+/* Manga-style speed lines - subtle */
 .speed-lines {
   position: fixed;
   top: 0;
@@ -88,9 +95,37 @@ body::before {
   bottom: 0;
   background: repeating-linear-gradient(45deg,
       transparent,
-      transparent 10px,
-      rgba(255, 255, 255, 0.02) 10px,
-      rgba(255, 255, 255, 0.02) 12px);
+      transparent 20px,
+      rgba(255, 255, 255, 0.015) 20px,
+      rgba(255, 255, 255, 0.015) 22px);
   pointer-events: none;
   z-index: 0;
+  opacity: 0.5;
+}
+
+/* Improved button focus states */
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid #FF6B9D;
+  outline-offset: 2px;
+  border-radius: 0.375rem;
+}
+
+/* Better text selection */
+::selection {
+  background-color: rgba(255, 107, 157, 0.3);
+  color: #FFFFFF;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Improved form inputs */
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid #FF6B9D;
+  outline-offset: 2px;
 }

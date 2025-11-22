@@ -15,31 +15,30 @@ const TopicSelection = ({ topics, onSelect }) => {
     };
 
     return (
-        <div className="space-y-6">
-            <h2 className="text-2xl font-semibold text-center mb-6">Choose a Topic</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="space-y-6" role="region" aria-label="Topic selection">
+            <h2 className="text-xl sm:text-2xl font-semibold text-center mb-4 sm:mb-6 text-white">Choose a Topic</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
                 {/* All Topics Option */}
                 <motion.button
-                    whileHover={{ scale: 1.03 }}
+                    whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                     onClick={() => onSelect({
-                        topic: "🌟 All Topics",
+                        topic: "All Topics",
                         questions: topics.flatMap(t => t.questions),
                         isAllTopics: true
                     })}
-                    className="flex flex-col items-center justify-center p-6 rounded-lg border-4 transition-all group md:col-span-2 lg:col-span-3"
+                    className="flex flex-col items-center justify-center p-5 sm:p-6 rounded-lg border-2 sm:border-4 transition-all group sm:col-span-2 lg:col-span-3 min-h-[120px] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
                     style={{
                         background: 'linear-gradient(135deg, #FF6B9D 0%, #FFD93D 25%, #6BCB77 50%, #4D96FF 75%, #FF6B9D 100%)',
                         backgroundSize: '200% 200%',
                         animation: 'gradient 3s ease infinite',
-                        borderImage: 'linear-gradient(45deg, #FF6B9D, #FFD93D, #6BCB77, #4D96FF) 1',
                     }}
+                    aria-label={`All Topics - ${topics.reduce((sum, t) => sum + t.questions.length, 0)} questions`}
                 >
-                    <div className="mb-4 text-white text-6xl">🎯</div>
-                    <span className="text-2xl font-bold text-white text-center drop-shadow-lg">
+                    <span className="text-2xl sm:text-3xl font-bold text-white text-center mb-2">
                         All Topics - Ultimate Challenge
                     </span>
-                    <span className="text-lg text-white mt-2 font-semibold">
+                    <span className="text-base sm:text-lg text-white font-medium">
                         {topics.reduce((sum, t) => sum + t.questions.length, 0)} Questions • Randomized Order
                     </span>
                 </motion.button>
@@ -48,16 +47,17 @@ const TopicSelection = ({ topics, onSelect }) => {
                 {topics.map((topic, index) => (
                     <motion.button
                         key={index}
-                        whileHover={{ scale: 1.03, backgroundColor: 'rgba(51, 65, 85, 1)' }}
+                        whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
                         onClick={() => onSelect(topic)}
-                        className="flex flex-col items-center justify-center p-6 bg-slate-700 rounded-lg border border-slate-600 hover:border-primary transition-colors group"
+                        className="flex flex-col items-center justify-center p-5 sm:p-6 bg-slate-700 rounded-lg border-2 border-slate-600 hover:border-primary transition-all group min-h-[140px] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
+                        aria-label={`${topic.topic} - ${topic.questions.length} questions`}
                     >
-                        <div className="mb-4 text-slate-400 group-hover:text-primary transition-colors">
+                        <div className="mb-3 sm:mb-4 text-slate-300 group-hover:text-primary transition-colors" aria-hidden="true">
                             {getIcon(topic.topic)}
                         </div>
-                        <span className="text-lg font-medium text-center">{topic.topic}</span>
-                        <span className="text-sm text-slate-400 mt-2">{topic.questions.length} Questions</span>
+                        <span className="text-base sm:text-lg font-semibold text-center text-white mb-1">{topic.topic}</span>
+                        <span className="text-sm text-slate-300">{topic.questions.length} Questions</span>
                     </motion.button>
                 ))}
             </div>

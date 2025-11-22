@@ -1,6 +1,7 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { CheckCircle2, Circle, Clock, ChevronUp, ChevronDown } from 'lucide-react';
+import { CheckCircle2, Circle, Clock, ChevronUp, ChevronDown, HelpCircle } from 'lucide-react';
+import ConfirmationDialog from './ConfirmationDialog';
 
 const QuizInterface = ({ topic, onSubmit, onBack, setMascotMood, setMascotMessage }) => {
     // Shuffle questions if All Topics mode
@@ -20,6 +21,8 @@ const QuizInterface = ({ topic, onSubmit, onBack, setMascotMood, setMascotMessag
     const [startTime] = useState(Date.now());
     const [elapsedTime, setElapsedTime] = useState(0);
     const [isAnswered, setIsAnswered] = useState(false);
+    const [showFinishConfirm, setShowFinishConfirm] = useState(false);
+    const [showHelp, setShowHelp] = useState(false);
 
     // Timer effect
     useEffect(() => {
@@ -161,7 +164,7 @@ const QuizInterface = ({ topic, onSubmit, onBack, setMascotMood, setMascotMessag
         setRankingAnswers({ ...rankingAnswers, [questionId]: newOrder });
     };
 
-    const checkAnswer = () => {
+    const checkAnswer = useCallback(() => {
         const questionId = currentQuestion.id;
 
         if (currentQuestion.type === 'matching') {
@@ -281,7 +284,7 @@ const QuizInterface = ({ topic, onSubmit, onBack, setMascotMood, setMascotMessag
                 setMascotMessage('Oh no! That was incorrect.');
             }
         }
-    };
+    }, [currentQuestion, answers, rankingAnswers, textAnswers, matchingAnswers, setMascotMood, setMascotMessage]);
 
     const handleNext = () => {
         if (currentQuestionIndex < totalQuestions - 1) {
@@ -290,8 +293,14 @@ const QuizInterface = ({ topic, onSubmit, onBack, setMascotMood, setMascotMessag
             setMascotMood('thinking');
             setMascotMessage('Next question...');
         } else {
-            handleSubmit();
+            // Show confirmation before finishing
+            setShowFinishConfirm(true);
         }
+    };
+
+    const handleConfirmFinish = () => {
+        setShowFinishConfirm(false);
+        handleSubmit();
     };
 
     const handlePrevious = () => {
@@ -354,29 +363,95 @@ const QuizInterface = ({ topic, onSubmit, onBack, setMascotMood, setMascotMessag
 
     const progress = ((currentQuestionIndex + 1) / totalQuestions) * 100;
 
+    // Keyboard shortcuts
+    useEffect(() => {
+        const handleKeyPress = (e) => {
+            // Don't trigger shortcuts when typing in inputs
+            if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+            
+            if (e.key === 'ArrowRight' && !e.shiftKey && !e.ctrlKey && !e.metaKey) {
+                e.preventDefault();
+                if (isAnswered && currentQuestionIndex < totalQuestions - 1) {
+                    if (currentQuestionIndex < totalQuestions - 1) {
+                        setCurrentQuestionIndex(currentQuestionIndex + 1);
+                        setIsAnswered(false);
+                        setMascotMood('thinking');
+                        setMascotMessage('Next question...');
+                    } else {
+                        setShowFinishConfirm(true);
+                    }
+                } else if (!isAnswered) {
+                    checkAnswer();
+                }
+            } else if (e.key === 'ArrowLeft' && !e.shiftKey && !e.ctrlKey && !e.metaKey) {
+                e.preventDefault();
+                if (currentQuestionIndex > 0) {
+                    setCurrentQuestionIndex(currentQuestionIndex - 1);
+                    setIsAnswered(true);
+                    setMascotMood('neutral');
+                    setMascotMessage('Reviewing previous question.');
+                }
+            } else if (e.key === 'Enter' && !e.shiftKey && !e.ctrlKey && !e.metaKey) {
+                e.preventDefault();
+                if (!isAnswered) {
+                    checkAnswer();
+                } else if (currentQuestionIndex < totalQuestions - 1) {
+                    if (currentQuestionIndex < totalQuestions - 1) {
+                        setCurrentQuestionIndex(currentQuestionIndex + 1);
+                        setIsAnswered(false);
+                        setMascotMood('thinking');
+                        setMascotMessage('Next question...');
+                    } else {
+                        setShowFinishConfirm(true);
+                    }
+                }
+            } else if (e.key === '?' || (e.key === 'h' && e.shiftKey)) {
+                e.preventDefault();
+                setShowHelp(prev => !prev);
+            }
+        };
+
+        window.addEventListener('keydown', handleKeyPress);
+        return () => window.removeEventListener('keydown', handleKeyPress);
+    }, [isAnswered, currentQuestionIndex, totalQuestions, checkAnswer]);
+
     return (
-        <div className="max-w-2xl mx-auto">
+        <div className="max-w-2xl mx-auto" role="main" aria-label="Quiz interface">
             {/* Header / Progress */}
-            <div className="mb-6 flex justify-between items-center">
-                <button onClick={onBack} className="text-sm text-slate-400 hover:text-white">
-                    &larr; Back to Topics
-                </button>
-                <div className="flex items-center gap-4">
-                    <div className="flex items-center gap-2 px-3 py-1 bg-slate-700 rounded-lg border border-slate-600">
-                        <Clock size={16} className="text-secondary" />
-                        <span className="text-sm font-mono font-bold text-secondary">
+            <div className="mb-4 sm:mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 sm:gap-0">
+                <div className="flex items-center gap-3">
+                    <button 
+                        onClick={onBack} 
+                        className="text-sm sm:text-base text-slate-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded px-2 py-1 min-h-[44px] flex items-center"
+                        aria-label="Go back to topic selection"
+                    >
+                        ← Back to Topics
+                    </button>
+                    <button
+                        onClick={() => setShowHelp(!showHelp)}
+                        className="p-2 text-slate-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded min-h-[44px] min-w-[44px] flex items-center justify-center"
+                        aria-label="Show help and keyboard shortcuts"
+                        title="Press ? for help"
+                    >
+                        <HelpCircle size={20} />
+                    </button>
+                </div>
+                <div className="flex items-center gap-3 sm:gap-4 flex-wrap">
+                    <div className="flex items-center gap-2 px-3 py-2 bg-slate-700 rounded-lg border border-slate-600" aria-label={`Time elapsed: ${formatTime(elapsedTime)}`}>
+                        <Clock size={18} className="text-yellow-400" aria-hidden="true" />
+                        <span className="text-sm font-mono font-bold text-yellow-400">
                             {formatTime(elapsedTime)}
                         </span>
                     </div>
-                    <div className="text-sm font-medium text-slate-300">
-                        Question {currentQuestionIndex + 1} / {totalQuestions}
+                    <div className="text-sm sm:text-base font-medium text-slate-200" aria-label={`Question ${currentQuestionIndex + 1} of ${totalQuestions}`}>
+                        Question <span className="font-bold">{currentQuestionIndex + 1}</span> / {totalQuestions}
                     </div>
                 </div>
             </div>
 
-            <div className="w-full bg-slate-700 h-2 rounded-full mb-8 overflow-hidden">
+            <div className="w-full bg-slate-700 h-3 rounded-full mb-6 sm:mb-8 overflow-hidden" role="progressbar" aria-valuenow={Math.round(progress)} aria-valuemin="0" aria-valuemax="100" aria-label="Quiz progress">
                 <motion.div
-                    className="h-full bg-primary"
+                    className="h-full bg-gradient-to-r from-pink-500 to-yellow-400"
                     initial={{ width: 0 }}
                     animate={{ width: `${progress}%` }}
                     transition={{ duration: 0.3 }}
@@ -392,15 +467,16 @@ const QuizInterface = ({ topic, onSubmit, onBack, setMascotMood, setMascotMessag
                     exit={{ opacity: 0, x: -20 }}
                     transition={{ duration: 0.2 }}
                 >
-                    <h3 className="text-xl font-semibold mb-2 whitespace-pre-line">{currentQuestion.question}</h3>
+                    <h3 className="text-lg sm:text-xl font-semibold mb-4 sm:mb-6 whitespace-pre-line text-white leading-relaxed">{currentQuestion.question}</h3>
 
                     {currentQuestion.image && (
                         <div className="mb-4 flex justify-center">
                             <img 
                                 src={`${import.meta.env.BASE_URL || '/'}images/${currentQuestion.image}`}
                                 alt="Question diagram"
-                                className="max-w-full h-auto rounded-lg border border-slate-600 shadow-lg"
+                                className="max-w-full h-auto rounded-lg border-2 border-slate-600 shadow-lg"
                                 style={{ maxHeight: '400px' }}
+                                loading="lazy"
                                 onError={(e) => {
                                     console.error('Image failed to load:', e.target.src);
                                     // Try fallback path
@@ -444,9 +520,10 @@ const QuizInterface = ({ topic, onSubmit, onBack, setMascotMood, setMascotMessag
                                         const matchColor = isMatched && !isAnswered ? matchColors[userMatch % matchColors.length] : null;
                                         
                                         return (
-                                            <div
+                                            <button
                                                 key={idx}
-                                                className={`p-3 rounded-lg border text-center font-mono text-lg transition-all
+                                                type="button"
+                                                className={`p-4 rounded-lg border-2 text-center font-mono text-lg transition-all min-h-[60px] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary
                                                     ${isAnswered
                                                         ? (isCorrect 
                                                             ? 'bg-green-500/20 border-green-500 text-green-200'
@@ -454,16 +531,18 @@ const QuizInterface = ({ topic, onSubmit, onBack, setMascotMood, setMascotMessag
                                                             ? 'bg-red-500/20 border-red-500 text-red-200'
                                                             : 'bg-slate-700/50 border-slate-600')
                                                         : (isSelected
-                                                            ? 'bg-secondary/30 border-secondary ring-2 ring-secondary'
+                                                            ? 'bg-yellow-500/30 border-yellow-500 ring-2 ring-yellow-500'
                                                             : isMatched && matchColor
                                                             ? `${matchColor.bg} ${matchColor.border} ${matchColor.text}`
                                                             : 'bg-slate-700/50 border-slate-600 hover:bg-slate-700 cursor-pointer')
                                                     }
                                                 `}
                                                 onClick={() => handleSymbolClick(opt.symbol)}
+                                                aria-pressed={isSelected}
+                                                aria-label={`Symbol: ${opt.symbol}`}
                                             >
                                                 {opt.symbol}
-                                            </div>
+                                            </button>
                                         );
                                     })}
                                 </div>
@@ -496,9 +575,10 @@ const QuizInterface = ({ topic, onSubmit, onBack, setMascotMood, setMascotMessag
                                             const matchColor = isMatched && !isAnswered ? matchColors[originalIdx % matchColors.length] : null;
                                             
                                             return (
-                                                <div
+                                                <button
                                                     key={originalIdx}
-                                                    className={`p-3 rounded-lg border text-center transition-all
+                                                    type="button"
+                                                    className={`p-4 rounded-lg border-2 text-center transition-all min-h-[60px] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary
                                                         ${isAnswered
                                                             ? (isCorrect 
                                                                 ? 'bg-green-500/20 border-green-500 text-green-200'
@@ -511,14 +591,15 @@ const QuizInterface = ({ topic, onSubmit, onBack, setMascotMood, setMascotMessag
                                                         }
                                                     `}
                                                     onClick={() => handleDescriptionClick(originalIdx)}
+                                                    aria-label={`Description: ${opt.description}`}
                                                 >
-                                                    {opt.description}
+                                                    <span>{opt.description}</span>
                                                     {isAnswered && !isCorrect && matchedSymbol && (
-                                                        <div className="text-xs mt-1 text-red-400">
+                                                        <div className="text-xs mt-2 text-red-400">
                                                             Should match: {opt.symbol}
                                                         </div>
                                                     )}
-                                                </div>
+                                                </button>
                                             );
                                         })}
                                 </div>
@@ -549,16 +630,18 @@ const QuizInterface = ({ topic, onSubmit, onBack, setMascotMood, setMascotMessag
                                             <button
                                                 onClick={() => handleRankingMove('up', position)}
                                                 disabled={isAnswered || position === 0}
-                                                className="p-1 rounded hover:bg-slate-600 disabled:opacity-30 disabled:cursor-not-allowed"
+                                                className="min-w-[44px] min-h-[44px] p-2 rounded hover:bg-slate-600 disabled:opacity-30 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-primary transition-all"
+                                                aria-label="Move up"
                                             >
-                                                <ChevronUp size={16} />
+                                                <ChevronUp size={18} />
                                             </button>
                                             <button
                                                 onClick={() => handleRankingMove('down', position)}
                                                 disabled={isAnswered || position === (rankingAnswers[currentQuestion.id]?.length || 0) - 1}
-                                                className="p-1 rounded hover:bg-slate-600 disabled:opacity-30 disabled:cursor-not-allowed"
+                                                className="min-w-[44px] min-h-[44px] p-2 rounded hover:bg-slate-600 disabled:opacity-30 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-primary transition-all"
+                                                aria-label="Move down"
                                             >
-                                                <ChevronDown size={16} />
+                                                <ChevronDown size={18} />
                                             </button>
                                         </div>
                                         <div className="flex-1 flex items-center gap-3">
@@ -596,13 +679,15 @@ const QuizInterface = ({ topic, onSubmit, onBack, setMascotMood, setMascotMessag
                                                 value={userVal}
                                                 onChange={(e) => handleTextChange(idx, e.target.value)}
                                                 disabled={isAnswered}
-                                                className={`flex-1 bg-slate-800 border rounded-lg px-4 py-2 outline-none focus:ring-2 focus:ring-primary transition-all
+                                                className={`flex-1 bg-slate-800 border-2 rounded-lg px-4 py-3 text-base outline-none focus:ring-2 focus:ring-primary transition-all min-h-[44px]
                                                     ${isAnswered
-                                                        ? (isCorrect ? 'border-green-500 text-green-400' : 'border-red-500 text-red-400')
+                                                        ? (isCorrect ? 'border-green-500 text-green-300' : 'border-red-500 text-red-300')
                                                         : 'border-slate-600 text-white focus:border-primary'
                                                     }
                                                 `}
                                                 placeholder="Type your answer..."
+                                                aria-label={`Answer ${idx + 1}`}
+                                                aria-invalid={isAnswered && !isCorrect}
                                             />
                                             {isAnswered && (
                                                 isCorrect
@@ -652,12 +737,14 @@ const QuizInterface = ({ topic, onSubmit, onBack, setMascotMood, setMascotMessag
                                                 key={originalIdx}
                                                 onClick={() => handleOptionToggle(displayIdx)}
                                                 disabled={isAnswered}
-                                                className={`w-full text-left p-4 rounded-lg border transition-all flex items-start gap-3 ${buttonStyle}`}
+                                                className={`w-full text-left p-4 sm:p-5 rounded-lg border-2 transition-all flex items-start gap-3 min-h-[60px] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary ${buttonStyle}`}
+                                                aria-pressed={isSelected}
+                                                aria-label={isSelected ? `Selected: ${option.text}` : option.text}
                                             >
-                                                <div className={`mt-1 ${isSelected ? 'text-primary' : 'text-slate-400'}`}>
+                                                <div className={`mt-1 flex-shrink-0 ${isSelected ? 'text-primary' : 'text-slate-400'}`} aria-hidden="true">
                                                     {icon}
                                                 </div>
-                                                <span>{option.text}</span>
+                                                <span className="text-base sm:text-lg">{option.text}</span>
                                             </button>
                                         );
                                     })}
@@ -678,15 +765,46 @@ const QuizInterface = ({ topic, onSubmit, onBack, setMascotMood, setMascotMessag
                 </motion.div>
             </AnimatePresence>
 
+            {/* Help Dialog */}
+            {showHelp && (
+                <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="mt-6 p-4 bg-slate-700/90 border-2 border-slate-600 rounded-lg"
+                    role="region"
+                    aria-label="Help and keyboard shortcuts"
+                >
+                    <h4 className="text-lg font-bold text-white mb-3 flex items-center gap-2">
+                        <HelpCircle size={20} className="text-blue-400" />
+                        Keyboard Shortcuts
+                    </h4>
+                    <ul className="space-y-2 text-sm text-slate-300">
+                        <li><kbd className="px-2 py-1 bg-slate-800 rounded border border-slate-600">Enter</kbd> - Check answer / Next question</li>
+                        <li><kbd className="px-2 py-1 bg-slate-800 rounded border border-slate-600">→</kbd> - Next / Check answer</li>
+                        <li><kbd className="px-2 py-1 bg-slate-800 rounded border border-slate-600">←</kbd> - Previous question</li>
+                        <li><kbd className="px-2 py-1 bg-slate-800 rounded border border-slate-600">?</kbd> - Toggle help</li>
+                    </ul>
+                    <button
+                        onClick={() => setShowHelp(false)}
+                        className="mt-4 text-sm text-blue-400 hover:text-blue-300 underline"
+                        aria-label="Close help"
+                    >
+                        Close
+                    </button>
+                </motion.div>
+            )}
+
             {/* Navigation */}
-            <div className="mt-8 flex justify-between">
+            <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row justify-between gap-3 sm:gap-0">
                 <button
                     onClick={handlePrevious}
                     disabled={currentQuestionIndex === 0 || isAnswered}
-                    className={`px-6 py-2 rounded-lg font-medium ${currentQuestionIndex === 0 || isAnswered
-                        ? 'opacity-50 cursor-not-allowed text-slate-500'
-                        : 'text-white hover:bg-slate-700'
-                        }`}
+                    className={`min-h-[44px] px-6 py-3 rounded-lg font-semibold text-base transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary ${
+                        currentQuestionIndex === 0 || isAnswered
+                        ? 'opacity-50 cursor-not-allowed text-slate-500 bg-slate-700'
+                        : 'text-white bg-slate-700 hover:bg-slate-600'
+                    }`}
+                    aria-label="Go to previous question"
                 >
                     Previous
                 </button>
@@ -694,19 +812,33 @@ const QuizInterface = ({ topic, onSubmit, onBack, setMascotMood, setMascotMessag
                 {!isAnswered ? (
                     <button
                         onClick={checkAnswer}
-                        className="px-6 py-2 bg-primary hover:bg-indigo-600 text-white rounded-lg font-medium transition-colors shadow-lg shadow-primary/25"
+                        className="min-h-[44px] px-6 py-3 bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white rounded-lg font-semibold text-base transition-all shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500"
+                        aria-label="Check your answer"
                     >
                         Check Answer
                     </button>
                 ) : (
                     <button
                         onClick={handleNext}
-                        className="px-6 py-2 bg-secondary hover:bg-yellow-500 text-slate-900 rounded-lg font-bold transition-colors shadow-lg shadow-secondary/25"
+                        className="min-h-[44px] px-6 py-3 bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-500 hover:to-orange-600 text-slate-900 rounded-lg font-bold text-base transition-all shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-400"
+                        aria-label={currentQuestionIndex === totalQuestions - 1 ? 'Finish quiz' : 'Go to next question'}
                     >
                         {currentQuestionIndex === totalQuestions - 1 ? 'Finish Quiz' : 'Next Question'}
                     </button>
                 )}
             </div>
+
+            {/* Confirmation Dialog */}
+            <ConfirmationDialog
+                isOpen={showFinishConfirm}
+                onConfirm={handleConfirmFinish}
+                onCancel={() => setShowFinishConfirm(false)}
+                title="Finish Quiz?"
+                message={`You're about to finish the quiz. You've answered ${currentQuestionIndex + 1} out of ${totalQuestions} questions. Are you sure you want to submit?`}
+                confirmText="Finish Quiz"
+                cancelText="Continue"
+                type="warning"
+            />
         </div>
     );
 };
