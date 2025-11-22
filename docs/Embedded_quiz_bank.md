@@ -431,7 +431,7 @@ Static variable 1
 Const variable
 
 
-
+fo
 **Match the description to the operator**
 
 & Bitwise AND

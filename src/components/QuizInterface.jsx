@@ -16,6 +16,7 @@ const QuizInterface = ({ topic, onSubmit, onBack, setMascotMood, setMascotMessag
     const [rankingAnswers, setRankingAnswers] = useState({}); // { questionId: [orderedOptionIndices] }
     const [matchingAnswers, setMatchingAnswers] = useState({}); // { questionId: { symbol: descriptionIndex } }
     const [selectedSymbol, setSelectedSymbol] = useState(null); // Currently selected symbol for matching
+    const [shuffledOptionIndices, setShuffledOptionIndices] = useState({}); // { questionId: [shuffledIndices] }
     const [startTime] = useState(Date.now());
     const [elapsedTime, setElapsedTime] = useState(0);
     const [isAnswered, setIsAnswered] = useState(false);
@@ -38,21 +39,25 @@ const QuizInterface = ({ topic, onSubmit, onBack, setMascotMood, setMascotMessag
     const currentQuestion = shuffledQuestions[currentQuestionIndex];
     const totalQuestions = shuffledQuestions.length;
 
-    const handleOptionToggle = (optionIndex) => {
+    const handleOptionToggle = (displayIndex) => {
         if (isAnswered) return;
 
         const questionId = currentQuestion.id;
+        // Convert display index (shuffled position) to original option index
+        const shuffledIndices = shuffledOptionIndices[questionId] || currentQuestion.options.map((_, idx) => idx);
+        const originalIndex = shuffledIndices[displayIndex];
+        
         const currentSelected = answers[questionId] || [];
         let newSelected;
 
         if (currentQuestion.multiSelect) {
-            if (currentSelected.includes(optionIndex)) {
-                newSelected = currentSelected.filter(i => i !== optionIndex);
+            if (currentSelected.includes(originalIndex)) {
+                newSelected = currentSelected.filter(i => i !== originalIndex);
             } else {
-                newSelected = [...currentSelected, optionIndex];
+                newSelected = [...currentSelected, originalIndex];
             }
         } else {
-            newSelected = [optionIndex];
+            newSelected = [originalIndex];
         }
 
         setAnswers({ ...answers, [questionId]: newSelected });
@@ -79,6 +84,25 @@ const QuizInterface = ({ topic, onSubmit, onBack, setMascotMood, setMascotMessag
 
     // Initialize matching answers and shuffle descriptions if not set
     const [shuffledDescriptions, setShuffledDescriptions] = useState({});
+    
+    // Reset shuffled indices when topic changes (new quiz started)
+    // Use topic name as key since topics don't have unique IDs
+    useEffect(() => {
+        setShuffledOptionIndices({});
+        setSelectedSymbol(null);
+    }, [topic.topic || topic.name]);
+
+    // Initialize shuffled option indices for multiple choice questions only
+    // (fill_in_the_blank and ranking questions have order-dependent logic)
+    useEffect(() => {
+        if (!shuffledOptionIndices[currentQuestion.id] && currentQuestion.type === 'multiple_choice') {
+            // Shuffle options for this question
+            const shuffled = currentQuestion.options
+                .map((_, idx) => idx)
+                .sort(() => Math.random() - 0.5);
+            setShuffledOptionIndices({ ...shuffledOptionIndices, [currentQuestion.id]: shuffled });
+        }
+    }, [currentQuestion.id, currentQuestion.type, shuffledOptionIndices]);
     
     useEffect(() => {
         if (currentQuestion.type === 'matching' && !matchingAnswers[currentQuestion.id]) {
@@ -405,6 +429,20 @@ const QuizInterface = ({ topic, onSubmit, onBack, setMascotMood, setMascotMessag
                                         const isCorrect = isAnswered && userMatch === idx;
                                         const isWrong = isAnswered && isMatched && userMatch !== idx;
                                         
+                                        // Color palette for matched pairs - assign color based on the matched description index
+                                        // This way players can't predict pairs from colors
+                                        const matchColors = [
+                                            { bg: 'bg-blue-500/20', border: 'border-blue-500', text: 'text-blue-200' },
+                                            { bg: 'bg-purple-500/20', border: 'border-purple-500', text: 'text-purple-200' },
+                                            { bg: 'bg-pink-500/20', border: 'border-pink-500', text: 'text-pink-200' },
+                                            { bg: 'bg-yellow-500/20', border: 'border-yellow-500', text: 'text-yellow-200' },
+                                            { bg: 'bg-cyan-500/20', border: 'border-cyan-500', text: 'text-cyan-200' },
+                                            { bg: 'bg-orange-500/20', border: 'border-orange-500', text: 'text-orange-200' },
+                                        ];
+                                        // Use the matched description's index for color, not the symbol's index
+                                        // This prevents players from guessing pairs based on fixed colors
+                                        const matchColor = isMatched && !isAnswered ? matchColors[userMatch % matchColors.length] : null;
+                                        
                                         return (
                                             <div
                                                 key={idx}
@@ -417,8 +455,8 @@ const QuizInterface = ({ topic, onSubmit, onBack, setMascotMood, setMascotMessag
                                                             : 'bg-slate-700/50 border-slate-600')
                                                         : (isSelected
                                                             ? 'bg-secondary/30 border-secondary ring-2 ring-secondary'
-                                                            : isMatched
-                                                            ? 'bg-primary/20 border-primary text-white'
+                                                            : isMatched && matchColor
+                                                            ? `${matchColor.bg} ${matchColor.border} ${matchColor.text}`
                                                             : 'bg-slate-700/50 border-slate-600 hover:bg-slate-700 cursor-pointer')
                                                     }
                                                 `}
@@ -444,18 +482,31 @@ const QuizInterface = ({ topic, onSubmit, onBack, setMascotMood, setMascotMessag
                                             const isCorrect = isAnswered && matchedSymbol === opt.symbol;
                                             const isWrong = isAnswered && isMatched && matchedSymbol !== opt.symbol;
                                             
+                                            // Get the same color as the matched symbol - use description's own index for color
+                                            // This ensures both symbol and description show the same color when matched
+                                            const matchColors = [
+                                                { bg: 'bg-blue-500/20', border: 'border-blue-500', text: 'text-blue-200' },
+                                                { bg: 'bg-purple-500/20', border: 'border-purple-500', text: 'text-purple-200' },
+                                                { bg: 'bg-pink-500/20', border: 'border-pink-500', text: 'text-pink-200' },
+                                                { bg: 'bg-yellow-500/20', border: 'border-yellow-500', text: 'text-yellow-200' },
+                                                { bg: 'bg-cyan-500/20', border: 'border-cyan-500', text: 'text-cyan-200' },
+                                                { bg: 'bg-orange-500/20', border: 'border-orange-500', text: 'text-orange-200' },
+                                            ];
+                                            // Use this description's index for color - the symbol will use the same color when matched
+                                            const matchColor = isMatched && !isAnswered ? matchColors[originalIdx % matchColors.length] : null;
+                                            
                                             return (
                                                 <div
                                                     key={originalIdx}
-                                                    className={`p-3 rounded-lg border text-center
+                                                    className={`p-3 rounded-lg border text-center transition-all
                                                         ${isAnswered
                                                             ? (isCorrect 
                                                                 ? 'bg-green-500/20 border-green-500 text-green-200'
                                                                 : isWrong
                                                                 ? 'bg-red-500/20 border-red-500 text-red-200'
                                                                 : 'bg-slate-700/50 border-slate-600')
-                                                            : (isMatched
-                                                                ? 'bg-primary/20 border-primary text-white'
+                                                            : (isMatched && matchColor
+                                                                ? `${matchColor.bg} ${matchColor.border} ${matchColor.text}`
                                                                 : 'bg-slate-700/50 border-slate-600 hover:bg-slate-700 cursor-pointer')
                                                         }
                                                     `}
@@ -572,42 +623,44 @@ const QuizInterface = ({ topic, onSubmit, onBack, setMascotMood, setMascotMessag
                             )}
 
                             <div className="space-y-3">
-                                {currentQuestion.options.map((option, idx) => {
-                                    const isSelected = (answers[currentQuestion.id] || []).includes(idx);
-                                    const isCorrect = option.isCorrect;
+                                {(shuffledOptionIndices[currentQuestion.id] || currentQuestion.options.map((_, idx) => idx))
+                                    .map((originalIdx, displayIdx) => {
+                                        const option = currentQuestion.options[originalIdx];
+                                        const isSelected = (answers[currentQuestion.id] || []).includes(originalIdx);
+                                        const isCorrect = option.isCorrect;
 
-                                    let buttonStyle = 'bg-slate-700/50 border-slate-600 hover:bg-slate-700 hover:border-slate-500';
-                                    let icon = <Circle size={20} />;
+                                        let buttonStyle = 'bg-slate-700/50 border-slate-600 hover:bg-slate-700 hover:border-slate-500';
+                                        let icon = <Circle size={20} />;
 
-                                    if (isSelected) {
-                                        buttonStyle = 'bg-primary/20 border-primary text-white';
-                                        icon = <CheckCircle2 size={20} />;
-                                    }
-
-                                    if (isAnswered) {
-                                        if (isCorrect) {
-                                            buttonStyle = 'bg-green-500/20 border-green-500 text-green-100';
-                                            icon = <CheckCircle2 size={20} className="text-green-400" />;
-                                        } else if (isSelected && !isCorrect) {
-                                            buttonStyle = 'bg-red-500/20 border-red-500 text-red-100';
-                                            icon = <Circle size={20} className="text-red-400" />;
+                                        if (isSelected) {
+                                            buttonStyle = 'bg-primary/20 border-primary text-white';
+                                            icon = <CheckCircle2 size={20} />;
                                         }
-                                    }
 
-                                    return (
-                                        <button
-                                            key={idx}
-                                            onClick={() => handleOptionToggle(idx)}
-                                            disabled={isAnswered}
-                                            className={`w-full text-left p-4 rounded-lg border transition-all flex items-start gap-3 ${buttonStyle}`}
-                                        >
-                                            <div className={`mt-1 ${isSelected ? 'text-primary' : 'text-slate-400'}`}>
-                                                {icon}
-                                            </div>
-                                            <span>{option.text}</span>
-                                        </button>
-                                    );
-                                })}
+                                        if (isAnswered) {
+                                            if (isCorrect) {
+                                                buttonStyle = 'bg-green-500/20 border-green-500 text-green-100';
+                                                icon = <CheckCircle2 size={20} className="text-green-400" />;
+                                            } else if (isSelected && !isCorrect) {
+                                                buttonStyle = 'bg-red-500/20 border-red-500 text-red-100';
+                                                icon = <Circle size={20} className="text-red-400" />;
+                                            }
+                                        }
+
+                                        return (
+                                            <button
+                                                key={originalIdx}
+                                                onClick={() => handleOptionToggle(displayIdx)}
+                                                disabled={isAnswered}
+                                                className={`w-full text-left p-4 rounded-lg border transition-all flex items-start gap-3 ${buttonStyle}`}
+                                            >
+                                                <div className={`mt-1 ${isSelected ? 'text-primary' : 'text-slate-400'}`}>
+                                                    {icon}
+                                                </div>
+                                                <span>{option.text}</span>
+                                            </button>
+                                        );
+                                    })}
                             </div>
                         </>
                     )}
