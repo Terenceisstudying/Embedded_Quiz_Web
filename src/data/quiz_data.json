@@ -1,0 +1,3317 @@
+[
+  {
+    "topic": "Introduction to Embedded Systems",
+    "questions": [
+      {
+        "id": "Introduction to Embedded Systems_1",
+        "question": "Which of the following best defines an Embedded System (ES)?",
+        "options": [
+          {
+            "text": "A general-purpose computer for various tasks.",
+            "isCorrect": false
+          },
+          {
+            "text": "A standalone software application.",
+            "isCorrect": false
+          },
+          {
+            "text": "A computing system dedicated to a specific task within a larger electrical system.",
+            "isCorrect": true
+          },
+          {
+            "text": "A system that only uses analogue electronics.",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "Introduction to Embedded Systems_2",
+        "question": "Choose the programming language that is the lowest level.",
+        "options": [
+          {
+            "text": "C",
+            "isCorrect": false
+          },
+          {
+            "text": "Fortran",
+            "isCorrect": false
+          },
+          {
+            "text": "Object",
+            "isCorrect": false
+          },
+          {
+            "text": "Assembly",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "Introduction to Embedded Systems_3",
+        "question": "Which of the following is true about \"hard real-time constraints\"?",
+        "options": [
+          {
+            "text": "Tasks have no deadlines.",
+            "isCorrect": false
+          },
+          {
+            "text": "Missed deadline can have extreme consequences.",
+            "isCorrect": true
+          },
+          {
+            "text": "A late response can degrade a system.",
+            "isCorrect": false
+          },
+          {
+            "text": "Typically non-critical systems.",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "Introduction to Embedded Systems_4",
+        "question": "Which best describes the pattern that any embedded system should follow?",
+        "options": [
+          {
+            "text": "input-output-process",
+            "isCorrect": false
+          },
+          {
+            "text": "process-input-output",
+            "isCorrect": false
+          },
+          {
+            "text": "process-output-input",
+            "isCorrect": false
+          },
+          {
+            "text": "input-process-output",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "Introduction to Embedded Systems_5",
+        "question": "A Compiler ...",
+        "options": [
+          {
+            "text": "translate source codes in 'C' language into object files",
+            "isCorrect": true
+          },
+          {
+            "text": "arranges all the '.c' files in the folder",
+            "isCorrect": false
+          },
+          {
+            "text": "is also called an Assembler.",
+            "isCorrect": false
+          },
+          {
+            "text": "translate source codes in 'C' language into an executable file.",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "Introduction to Embedded Systems_6",
+        "question": "What type of real-time constraint describes a system where missing deadlines can have catastrophic consequences (e.g., an airbag controller)?",
+        "options": [
+          {
+            "text": "Hard real-time",
+            "isCorrect": true
+          },
+          {
+            "text": "Non real-time",
+            "isCorrect": false
+          },
+          {
+            "text": "Soft real-time",
+            "isCorrect": false
+          },
+          {
+            "text": "Adaptive real-time",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "Introduction to Embedded Systems_7",
+        "question": "Which of the following are properties of Embedded Systems?",
+        "options": [
+          {
+            "text": "They often have strict timing constraints.",
+            "isCorrect": true
+          },
+          {
+            "text": "They interact with the real world using sensors and actuators.",
+            "isCorrect": true
+          },
+          {
+            "text": "They are dedicated to handle specific tasks.",
+            "isCorrect": true
+          },
+          {
+            "text": "They use abundant resources compared to general-purpose computers.",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": true
+      },
+      {
+        "id": "Introduction to Embedded Systems_8",
+        "question": "Based on the lecture, which file(s) can be converted to an object file? (can be more than 1)",
+        "options": [
+          {
+            "text": "c file",
+            "isCorrect": true
+          },
+          {
+            "text": "hex file",
+            "isCorrect": false
+          },
+          {
+            "text": "assembly file",
+            "isCorrect": true
+          },
+          {
+            "text": "decoded file",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": true
+      },
+      {
+        "id": "Introduction to Embedded Systems_9",
+        "question": "A startup code typically",
+        "options": [
+          {
+            "text": "initialize the Heap",
+            "isCorrect": true
+          },
+          {
+            "text": "reset all the memory",
+            "isCorrect": false
+          },
+          {
+            "text": "return to the main function",
+            "isCorrect": false
+          },
+          {
+            "text": "calls the main function",
+            "isCorrect": true
+          },
+          {
+            "text": "initialize the Stack",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "",
+        "multiSelect": true
+      },
+      {
+        "id": "Introduction to Embedded Systems_10",
+        "question": "Which of the following properties of embedded systems are true? (2 correct answers)",
+        "options": [
+          {
+            "text": "Utilization of high memory and computing power",
+            "isCorrect": false
+          },
+          {
+            "text": "Microcontrollers are typically used rather than microprocessors",
+            "isCorrect": true
+          },
+          {
+            "text": "Necessity for strict timing constraints",
+            "isCorrect": true
+          },
+          {
+            "text": "Dedication to a wide range of tasks",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": true
+      },
+      {
+        "id": "Introduction to Embedded Systems_11",
+        "question": "Which is the main characteristic of low-level language?",
+        "options": [
+          {
+            "text": "Productivity",
+            "isCorrect": true
+          },
+          {
+            "text": "Very easy to understand",
+            "isCorrect": false
+          },
+          {
+            "text": "Compact and optimised",
+            "isCorrect": true
+          },
+          {
+            "text": "Do not need a compiler/assembler",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": true
+      },
+      {
+        "id": "Introduction to Embedded Systems_12",
+        "question": "What is a \"Heisenbug\" as described in the context of the Therac-25 case study?",
+        "options": [
+          {
+            "text": "A bug that is easy to reproduce and fix.",
+            "isCorrect": false
+          },
+          {
+            "text": "A bug caused by hardware malfunction.",
+            "isCorrect": false
+          },
+          {
+            "text": "A bug that disappears or changes behavior when observed or debugged.",
+            "isCorrect": true
+          },
+          {
+            "text": "A bug related to network communication.",
+            "isCorrect": false
+          },
+          {
+            "text": "A bug that explodes",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "Introduction to Embedded Systems_13",
+        "question": "An Assembler ...",
+        "options": [
+          {
+            "text": "does a one-to-one with a compiler",
+            "isCorrect": false
+          },
+          {
+            "text": "translations an assembly source file into an object file",
+            "isCorrect": true
+          },
+          {
+            "text": "optimizes the source code.",
+            "isCorrect": false
+          },
+          {
+            "text": "is also called a Compiler",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "Introduction to Embedded Systems_14",
+        "question": "Which is/are the typical product development process?",
+        "options": [
+          {
+            "text": "Testing",
+            "isCorrect": false
+          },
+          {
+            "text": "Deployment",
+            "isCorrect": false
+          },
+          {
+            "text": "Implementation",
+            "isCorrect": false
+          },
+          {
+            "text": "All of the above",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "Introduction to Embedded Systems_15",
+        "question": "The Linker ...",
+        "options": [
+          {
+            "text": "archives the data files into a single executable file",
+            "isCorrect": false
+          },
+          {
+            "text": "executes a file",
+            "isCorrect": false
+          },
+          {
+            "text": "loads the executable file to the memory for execution",
+            "isCorrect": false
+          },
+          {
+            "text": "combines one or more object files into a single executable file",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "Introduction to Embedded Systems_16",
+        "question": "Which of these are properties of embedded systems?",
+        "options": [
+          {
+            "text": "Able to handle certain timing constraints",
+            "isCorrect": true
+          },
+          {
+            "text": "Unlimited processing power",
+            "isCorrect": false
+          },
+          {
+            "text": "Based on microcontrollers",
+            "isCorrect": true
+          },
+          {
+            "text": "Infinite memory",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": true
+      },
+      {
+        "id": "Introduction to Embedded Systems_17",
+        "question": "Which one is an intermediate file produced by the compiler?",
+        "options": [
+          {
+            "text": "Objective file",
+            "isCorrect": false
+          },
+          {
+            "text": "Binary file",
+            "isCorrect": false
+          },
+          {
+            "text": "Object file",
+            "isCorrect": true
+          },
+          {
+            "text": "Objection file",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      }
+    ]
+  },
+  {
+    "topic": "Embedded C",
+    "questions": [
+      {
+        "id": "Embedded C_1",
+        "question": "When monitoring a specific bit, for example, bit 5 of register P0, what expression creates a mask to target that bit?",
+        "options": [
+          {
+            "text": "(P0 \\& 5)",
+            "isCorrect": false
+          },
+          {
+            "text": "(5 << 1)",
+            "isCorrect": false
+          },
+          {
+            "text": "(P0 | 5)",
+            "isCorrect": false
+          },
+          {
+            "text": "(1 << 5)",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "Embedded C_2",
+        "question": "17 \\&\\& 23 = ?",
+        "options": [
+          {
+            "text": "6",
+            "isCorrect": false
+          },
+          {
+            "text": "40",
+            "isCorrect": false
+          },
+          {
+            "text": "0",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "Embedded C_3",
+        "question": "To extract the upper 8 bits from a 16-bit data, what is the first recommended operation?",
+        "options": [
+          {
+            "text": "Bitwise AND with 0xFF00",
+            "isCorrect": true
+          },
+          {
+            "text": "Logical AND with 0xFF00",
+            "isCorrect": false
+          },
+          {
+            "text": "Bitwise OR with 0x00FF",
+            "isCorrect": false
+          },
+          {
+            "text": "Right shift by 8 bits",
+            "isCorrect": false
+          },
+          {
+            "text": "Left shift by 8 bits",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "Embedded C_4",
+        "question": "Which of the following is False?",
+        "options": [
+          {
+            "text": "Exponentiation (^)",
+            "isCorrect": true
+          },
+          {
+            "text": "Modulo (%)",
+            "isCorrect": false
+          },
+          {
+            "text": "Addition (+)",
+            "isCorrect": false
+          },
+          {
+            "text": "Division (/)",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "Embedded C_5",
+        "question": "Which data type is usually 4 bytes and primarily used for measuring things like weight, distance, or temperature on a Pico W.",
+        "options": [
+          {
+            "text": "long double",
+            "isCorrect": false
+          },
+          {
+            "text": "double",
+            "isCorrect": false
+          },
+          {
+            "text": "char",
+            "isCorrect": false
+          },
+          {
+            "text": "float",
+            "isCorrect": true
+          },
+          {
+            "text": "int",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "Embedded C_6",
+        "question": "Performing a left shift operation on a number by N bits is equivalent to what arithmetic operation?",
+        "options": [
+          {
+            "text": "Multiplying the number by 2 to the power of N",
+            "isCorrect": true
+          },
+          {
+            "text": "Multiplying the number by N",
+            "isCorrect": false
+          },
+          {
+            "text": "Dividing the number by N",
+            "isCorrect": false
+          },
+          {
+            "text": "Dividing the number by 2 to the power of N",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "Embedded C_7",
+        "question": "~0xEEE0 = ?",
+        "options": [
+          {
+            "text": "0x1110",
+            "isCorrect": false
+          },
+          {
+            "text": "0x111F",
+            "isCorrect": true
+          },
+          {
+            "text": "0xFFFE",
+            "isCorrect": false
+          },
+          {
+            "text": "0x000F",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "Embedded C_8",
+        "question": "What is the typical size of a short int data type?",
+        "options": [
+          {
+            "text": "8 bytes",
+            "isCorrect": false
+          },
+          {
+            "text": "4 bytes",
+            "isCorrect": false
+          },
+          {
+            "text": "2 bytes",
+            "isCorrect": true
+          },
+          {
+            "text": "1 byte",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "Embedded C_9",
+        "question": "Which operator is used to find the remainder of an integer division?",
+        "options": [
+          {
+            "text": "\\-",
+            "isCorrect": false
+          },
+          {
+            "text": "%",
+            "isCorrect": true
+          },
+          {
+            "text": "^",
+            "isCorrect": false
+          },
+          {
+            "text": "/",
+            "isCorrect": false
+          },
+          {
+            "text": "\\*",
+            "isCorrect": false
+          },
+          {
+            "text": "\\+",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "Embedded C_10",
+        "question": "How many bytes of memory does a char data type typically require in most C compilers?",
+        "options": [
+          {
+            "text": "1 byte",
+            "isCorrect": true
+          },
+          {
+            "text": "4 bytes",
+            "isCorrect": false
+          },
+          {
+            "text": "2 bytes",
+            "isCorrect": false
+          },
+          {
+            "text": "8 bytes",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "Embedded C_11",
+        "question": "If you declare an array int arr\\[5], what is the index of the last element?",
+        "options": [
+          {
+            "text": "0",
+            "isCorrect": false
+          },
+          {
+            "text": "2",
+            "isCorrect": false
+          },
+          {
+            "text": "3",
+            "isCorrect": false
+          },
+          {
+            "text": "4",
+            "isCorrect": true
+          },
+          {
+            "text": "5",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "Embedded C_12",
+        "question": "How many different bitwise operators are there? (Assume its for Pico C SDK)",
+        "options": [
+          {
+            "text": "2",
+            "isCorrect": false
+          },
+          {
+            "text": "3",
+            "isCorrect": false
+          },
+          {
+            "text": "4",
+            "isCorrect": false
+          },
+          {
+            "text": "5",
+            "isCorrect": false
+          },
+          {
+            "text": "6",
+            "isCorrect": true
+          },
+          {
+            "text": "7",
+            "isCorrect": false
+          },
+          {
+            "text": "8",
+            "isCorrect": false
+          },
+          {
+            "text": "9",
+            "isCorrect": false
+          },
+          {
+            "text": "too many to count",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "Embedded C_13",
+        "question": "What does the term \"Data Type\" primarily refer to in C programming?",
+        "options": [
+          {
+            "text": "The name of a variable",
+            "isCorrect": false
+          },
+          {
+            "text": "The type of data a variable can hold",
+            "isCorrect": true
+          },
+          {
+            "text": "The size of a variable",
+            "isCorrect": false
+          },
+          {
+            "text": "The memory address of a variable",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "Embedded C_14",
+        "question": "The operator (!) is used for Bitwise Complement (Negation)?",
+        "options": [
+          {
+            "text": "True",
+            "isCorrect": false
+          },
+          {
+            "text": "False",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "Embedded C_15",
+        "question": "In C, what numeric value represents TRUE in a conditional expression?",
+        "options": [
+          {
+            "text": "-",
+            "isCorrect": true
+          },
+          {
+            "text": "Any non-zero value",
+            "isCorrect": true
+          },
+          {
+            "text": "0",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": true
+      },
+      {
+        "id": "Embedded C_16",
+        "question": "If a register contains 0x06 and a left shift operation is performed by 1 position (0x06 << 1), what is the expected result?",
+        "options": [
+          {
+            "text": "0x03",
+            "isCorrect": false
+          },
+          {
+            "text": "0x0E",
+            "isCorrect": false
+          },
+          {
+            "text": "0x0C",
+            "isCorrect": true
+          },
+          {
+            "text": "0x07",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "Embedded C_17",
+        "question": "Which type of variable retains its value between function calls and is stored in RAM?",
+        "options": [
+          {
+            "text": "Volatile variable",
+            "isCorrect": false
+          },
+          {
+            "text": "Local variable",
+            "isCorrect": false
+          },
+          {
+            "text": "Static variable",
+            "isCorrect": true
+          },
+          {
+            "text": "Const variable",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "Embedded C_18",
+        "question": "Match the description to the operator",
+        "options": [
+          {
+            "text": "\\& Bitwise AND",
+            "isCorrect": false
+          },
+          {
+            "text": "\\&\\& Logical AND",
+            "isCorrect": false
+          },
+          {
+            "text": "| Bitwise OR",
+            "isCorrect": false
+          },
+          {
+            "text": "|| Logical OR",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      }
+    ]
+  },
+  {
+    "topic": "GPIO",
+    "questions": [
+      {
+        "id": "GPIO_1",
+        "question": "Which of the following communication bus tells an internal module to read or to write?",
+        "options": [
+          {
+            "text": "Data bus",
+            "isCorrect": false
+          },
+          {
+            "text": "Address bus",
+            "isCorrect": false
+          },
+          {
+            "text": "CPU bus",
+            "isCorrect": false
+          },
+          {
+            "text": "Control bus",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "GPIO_2",
+        "question": "An 8-bit GPIO port must be configured to have all 8 pins as \"all output\" or \"all input\"",
+        "options": [
+          {
+            "text": "True",
+            "isCorrect": false
+          },
+          {
+            "text": "False",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "GPIO_3",
+        "question": "GPIO pins always need to be used with an external resistor",
+        "options": [
+          {
+            "text": "True",
+            "isCorrect": false
+          },
+          {
+            "text": "False",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "GPIO_4",
+        "question": "17 \\&\\& 23 = ?",
+        "options": [
+          {
+            "text": "FALSE",
+            "isCorrect": false
+          },
+          {
+            "text": "40",
+            "isCorrect": false
+          },
+          {
+            "text": "0",
+            "isCorrect": false
+          },
+          {
+            "text": "TRUE",
+            "isCorrect": true
+          },
+          {
+            "text": "6",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "GPIO_5",
+        "question": "How is the specific function of a multiplexed pin typically selected on a microcontroller?",
+        "options": [
+          {
+            "text": "It is hard-wired during manufacturing and cannot be changed",
+            "isCorrect": false
+          },
+          {
+            "text": "By physically rewiring the pin to a different internal circuit",
+            "isCorrect": false
+          },
+          {
+            "text": "Through software configuration, such as writing to function select registers",
+            "isCorrect": true
+          },
+          {
+            "text": "Automatically by the microcontroller based on the connected external device",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "GPIO_6",
+        "question": "Why do modern microcontrollers often have \"multiplexed\" or \"multi-function\" pins?",
+        "options": [
+          {
+            "text": "To provide a redundant set of pins in case of hardware failure",
+            "isCorrect": false
+          },
+          {
+            "text": "To efficiently utilize a limited number of physical pins by allowing them to serve different functions under software control",
+            "isCorrect": true
+          },
+          {
+            "text": "To reduce power consumption by sharing tasks across multiple processors",
+            "isCorrect": false
+          },
+          {
+            "text": "To increase the overall clock speed of the microcontroller",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "GPIO_7",
+        "question": "GPIO pins can support which of the following (without additional components):",
+        "options": [
+          {
+            "text": "Analogue input and digital output",
+            "isCorrect": false
+          },
+          {
+            "text": "Digital input and output",
+            "isCorrect": true
+          },
+          {
+            "text": "Analogue output only",
+            "isCorrect": false
+          },
+          {
+            "text": "Analogue and digital input and output",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "GPIO_8",
+        "question": "Most microcontrollers multiplex their GPIO pins with other functions",
+        "options": [
+          {
+            "text": "True",
+            "isCorrect": true
+          },
+          {
+            "text": "False",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "GPIO_9",
+        "question": "Regarding the direction of a General Purpose Input/Output (GPIO) pin, which statement is true?",
+        "options": [
+          {
+            "text": "Pins can be changed between input and output modes, but not simultaneously",
+            "isCorrect": true
+          },
+          {
+            "text": "A single GPIO pin can simultaneously be configured as both an input and an output",
+            "isCorrect": false
+          },
+          {
+            "text": "A GPIO pin must be permanently set as either input or output during manufacturing",
+            "isCorrect": false
+          },
+          {
+            "text": "Input and output operations always occur on separate, dedicated pins",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "GPIO_10",
+        "question": "GPIO can be used to implement an SPI bus",
+        "options": [
+          {
+            "text": "True",
+            "isCorrect": true
+          },
+          {
+            "text": "False",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "GPIO_11",
+        "question": "In microcontrollers, GPIO stands for",
+        "options": [
+          {
+            "text": "General Public Input/Output",
+            "isCorrect": false
+          },
+          {
+            "text": "Global Purpose Input/Output",
+            "isCorrect": false
+          },
+          {
+            "text": "Global Public Input/Output",
+            "isCorrect": false
+          },
+          {
+            "text": "General Purpose Input/Output",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "GPIO_12",
+        "question": "In which circumstance would it be better to NOT use GPIO pins to communicate with a peripheral:",
+        "options": [
+          {
+            "text": "When the peripheral is read-only, and you can't write to it",
+            "isCorrect": false
+          },
+          {
+            "text": "When you can use a built-in bus like I2C or SPI",
+            "isCorrect": true
+          },
+          {
+            "text": "When the peripheral is a long distance away",
+            "isCorrect": true
+          },
+          {
+            "text": "When the peripheral specifies a very unusual custom interfacing protocol",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "",
+        "multiSelect": true
+      },
+      {
+        "id": "GPIO_13",
+        "question": "The internal memory map of a microcontroller tells the programmer",
+        "options": [
+          {
+            "text": "When the programmer can save and load files from",
+            "isCorrect": false
+          },
+          {
+            "text": "How to get a signal from an input pin to an output pin",
+            "isCorrect": false
+          },
+          {
+            "text": "The current amount of free RAM space in the device",
+            "isCorrect": false
+          },
+          {
+            "text": "The location of registers in memory",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "GPIO_14",
+        "question": "A multiplex matrix is used to connect buttons to a microcontroller because",
+        "options": [
+          {
+            "text": "It saves on the number of pins needed",
+            "isCorrect": true
+          },
+          {
+            "text": "The layout of the QWERTY keys means you must use a matrix",
+            "isCorrect": false
+          },
+          {
+            "text": "It allows LEDs to display when a key is pressed",
+            "isCorrect": false
+          },
+          {
+            "text": "It is a safe way to debounce input signals",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "GPIO_15",
+        "question": "17 \\&\\& 0 = ?",
+        "options": [
+          {
+            "text": "17",
+            "isCorrect": false
+          },
+          {
+            "text": "0",
+            "isCorrect": true
+          },
+          {
+            "text": "-17",
+            "isCorrect": false
+          },
+          {
+            "text": "TRUE",
+            "isCorrect": false
+          },
+          {
+            "text": "FALSE",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "",
+        "multiSelect": true
+      }
+    ]
+  },
+  {
+    "topic": "Digital Communication",
+    "questions": [
+      {
+        "id": "Digital Communication_1",
+        "question": "Half-duplex transmission between unit A and unit B is where",
+        "options": [
+          {
+            "text": "Units A and B take turns to transmit",
+            "isCorrect": true
+          },
+          {
+            "text": "Units A and B transmit at the same time",
+            "isCorrect": false
+          },
+          {
+            "text": "Unit A sends half of the data, then unit B sends the other half",
+            "isCorrect": false
+          },
+          {
+            "text": "Only Unit A can transmit, Unit B can only receive",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "Digital Communication_2",
+        "question": "A 7-bit ascii data is transmitted with 1 start bit, 1 stop bit and 1 parity bit at a baud rate of 9600. How fast is the 7-bit ascii data being transmitted?",
+        "options": [
+          {
+            "text": "0.115 ms",
+            "isCorrect": false
+          },
+          {
+            "text": "1.042 ms",
+            "isCorrect": true
+          },
+          {
+            "text": "0.104 ms",
+            "isCorrect": false
+          },
+          {
+            "text": "1.146 ms",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "Digital Communication_3",
+        "question": "Which digital communication protocol is asynchronous?",
+        "options": [
+          {
+            "text": "UART",
+            "isCorrect": true
+          },
+          {
+            "text": "SPI",
+            "isCorrect": false
+          },
+          {
+            "text": "I2C",
+            "isCorrect": false
+          },
+          {
+            "text": "All of them.",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "Digital Communication_4",
+        "question": "We need to provide slave address for UART communication protocol.",
+        "options": [
+          {
+            "text": "True",
+            "isCorrect": false
+          },
+          {
+            "text": "False",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "Digital Communication_5",
+        "question": "A synchronous communications link has a separate clock wire",
+        "options": [
+          {
+            "text": "True",
+            "isCorrect": true
+          },
+          {
+            "text": "False",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "Digital Communication_6",
+        "question": "The I2C protocol has separate wires for transmit and receive (called MOSI and MISO)",
+        "options": [
+          {
+            "text": "True",
+            "isCorrect": false
+          },
+          {
+            "text": "False",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "Digital Communication_7",
+        "question": "An SPI master can only have one slave",
+        "options": [
+          {
+            "text": "True",
+            "isCorrect": false
+          },
+          {
+            "text": "False",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "Digital Communication_8",
+        "question": "In EIA/RS-232, what indicates that a character is about to be transmitted",
+        "options": [
+          {
+            "text": "A start bit",
+            "isCorrect": true
+          },
+          {
+            "text": "The chip select (CS) line",
+            "isCorrect": false
+          },
+          {
+            "text": "The header is transmitted first",
+            "isCorrect": false
+          },
+          {
+            "text": "Transmit indicator wire",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "Digital Communication_9",
+        "question": "How is data transmitted onto the serial console?",
+        "options": [
+          {
+            "text": "One byte at a time",
+            "isCorrect": true
+          },
+          {
+            "text": "One word at a time",
+            "isCorrect": false
+          },
+          {
+            "text": "One string at a time",
+            "isCorrect": false
+          },
+          {
+            "text": "One sentence at a time",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "Digital Communication_10",
+        "question": "Using a single parity bit when transmitting a 7-bit character over EIA/RS-232, you can",
+        "options": [
+          {
+            "text": "Detect when 2 or 4 bits are received in error",
+            "isCorrect": false
+          },
+          {
+            "text": "Detect when 1 or 3 bits are received in error",
+            "isCorrect": true
+          },
+          {
+            "text": "Correct an error of 1 bit in the received character",
+            "isCorrect": false
+          },
+          {
+            "text": "Indicate to the transmitter that it must re-send the character",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      }
+    ]
+  },
+  {
+    "topic": "Interrupts",
+    "questions": [
+      {
+        "id": "Interrupts_1",
+        "question": "ISR code should ideally be",
+        "options": [
+          {
+            "text": "small and efficient",
+            "isCorrect": true
+          },
+          {
+            "text": "written in a high level language",
+            "isCorrect": false
+          },
+          {
+            "text": "written with a proper user interface",
+            "isCorrect": false
+          },
+          {
+            "text": "only executed at boot time",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "Interrupts_2",
+        "question": "What is the purpose of an interrupt vector table (IVT)?",
+        "options": [
+          {
+            "text": "To store code that prevents interrupts from happening",
+            "isCorrect": false
+          },
+          {
+            "text": "To hold the address of ISRs which can handle interrupts",
+            "isCorrect": true
+          },
+          {
+            "text": "The store the code that causes interrupts to happen",
+            "isCorrect": false
+          },
+          {
+            "text": "To store the ISR code for handling different interrupts",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "Interrupts_3",
+        "question": "Level-triggered interrupts can be falling or rising edge.",
+        "options": [
+          {
+            "text": "True",
+            "isCorrect": false
+          },
+          {
+            "text": "False",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "Interrupts_4",
+        "question": "A CPU can \\_\\_\\_ data onto a stack and later it must \\_\\_\\_ it off again",
+        "options": [
+          {
+            "text": "push",
+            "isCorrect": false
+          },
+          {
+            "text": "pop",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "Interrupts_5",
+        "question": "The watchdog timer (WDT) is designed to restart a system if the software crashes",
+        "options": [
+          {
+            "text": "True",
+            "isCorrect": false
+          },
+          {
+            "text": "False",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "Interrupts_6",
+        "question": "Why should you only clear the interrupt flag before exiting an ISR?",
+        "options": [
+          {
+            "text": "To prevent the ISR immediately re-running",
+            "isCorrect": true
+          },
+          {
+            "text": "To tidy up the stack before you leave",
+            "isCorrect": false
+          },
+          {
+            "text": "To tell the user that the code has ended",
+            "isCorrect": false
+          },
+          {
+            "text": "Because ISRs cannot use global variables",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "Interrupts_7",
+        "question": "The SP is",
+        "options": [
+          {
+            "text": "a stack placeholder the programmer uses to remember where the stack is in memory",
+            "isCorrect": false
+          },
+          {
+            "text": "a register that indicates the end of the stack",
+            "isCorrect": true
+          },
+          {
+            "text": "the \"stack push\" indicator",
+            "isCorrect": false
+          },
+          {
+            "text": "a variable that contains data for a short time",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "Interrupts_8",
+        "question": "If an event is happening with a very short durations in-between 2 given occurrences. Which is the best choice to take? (Assume we don't care about the power consumption)",
+        "options": [
+          {
+            "text": "Masking",
+            "isCorrect": false
+          },
+          {
+            "text": "Interrupts",
+            "isCorrect": true
+          },
+          {
+            "text": "Nested Interrupts",
+            "isCorrect": false
+          },
+          {
+            "text": "Polling",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "Interrupts_9",
+        "question": "An RTC crystal or oscillator allows a CPU to",
+        "options": [
+          {
+            "text": "Generate its main system clock",
+            "isCorrect": false
+          },
+          {
+            "text": "Connect to peripherals that also have an RTC",
+            "isCorrect": false
+          },
+          {
+            "text": "Improve the timing of its ISRs",
+            "isCorrect": false
+          },
+          {
+            "text": "Provide a signal that can be exactly divided into 1 second",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "Interrupts_10",
+        "question": "An interrupt is always a bad thing for a CPU",
+        "options": [
+          {
+            "text": "True",
+            "isCorrect": false
+          },
+          {
+            "text": "False",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "Interrupts_11",
+        "question": "In the lecture, we defined the utilisation for an interrupt as u = (h+c)/T. In general, utilisation is the percentage of time when the processor is busy and h is the timing overhead for handling the interrupt. Suppose the inter-arrival time between two events is 500 cycles and the processor needs 18 cycles for either a pop or a push. For an ISR which requires 20 cycles for completion, what is its utilisation?",
+        "options": [
+          {
+            "text": "6",
+            "isCorrect": false
+          },
+          {
+            "text": "6",
+            "isCorrect": false
+          },
+          {
+            "text": "2",
+            "isCorrect": false
+          },
+          {
+            "text": "4",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "Interrupts_12",
+        "question": "Inside a microprocessor, a \"timer\" is",
+        "options": [
+          {
+            "text": "A built-in clock unit",
+            "isCorrect": false
+          },
+          {
+            "text": "A counter that can run down or up",
+            "isCorrect": false
+          },
+          {
+            "text": "An ISR that is triggered by the RTC",
+            "isCorrect": false
+          },
+          {
+            "text": "Software that implements a stopwatch function",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "Interrupts_13",
+        "question": "Interrupts are usually really simple to debug",
+        "options": [
+          {
+            "text": "True",
+            "isCorrect": false
+          },
+          {
+            "text": "False",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      }
+    ]
+  },
+  {
+    "topic": "Timers \\& PWM",
+    "questions": [
+      {
+        "id": "Timers \\& PWM_1",
+        "question": "The count-down timer free-running mode means",
+        "options": [
+          {
+            "text": "Counter wraps back around to 0 after hitting a maximum value",
+            "isCorrect": false
+          },
+          {
+            "text": "Counter counts down to 0 then begins counting up",
+            "isCorrect": false
+          },
+          {
+            "text": "Counter wraps back around to maximum after counting down to 0",
+            "isCorrect": true
+          },
+          {
+            "text": "Counter counts down from maximum to 0 and then stops automatically",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "Timers \\& PWM_2",
+        "question": "CPU can execute other code while the timer is running concurrently.",
+        "options": [
+          {
+            "text": "True",
+            "isCorrect": true
+          },
+          {
+            "text": "False",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "Timers \\& PWM_3",
+        "question": "Inside a microcontroller, a \"timer\" is a/an ...",
+        "options": [
+          {
+            "text": "counter that can run down or up.",
+            "isCorrect": true
+          },
+          {
+            "text": "ISR that is triggered by the RTC",
+            "isCorrect": false
+          },
+          {
+            "text": "built-in clock unit.",
+            "isCorrect": false
+          },
+          {
+            "text": "software that implements a stopwatch function.",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "Timers \\& PWM_4",
+        "question": "A 1Hz clock is",
+        "options": [
+          {
+            "text": "generated using a crystal that emits a signal at 32.768kHz",
+            "isCorrect": true
+          },
+          {
+            "text": "generated using a counter that counts till 2^15",
+            "isCorrect": true
+          },
+          {
+            "text": "directly used as the main clock",
+            "isCorrect": false
+          },
+          {
+            "text": "used by the Real Time Clock",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "",
+        "multiSelect": true
+      },
+      {
+        "id": "Timers \\& PWM_5",
+        "question": "2. Flag/Interrupt set when the counter wraps around 1st clock edge after zero.",
+        "options": [
+          {
+            "text": "One-shot Mode",
+            "isCorrect": false
+          },
+          {
+            "text": "Continuous Mode",
+            "isCorrect": false
+          },
+          {
+            "text": "Periodic Timer Mode",
+            "isCorrect": false
+          },
+          {
+            "text": "Free Running Mode",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "Timers \\& PWM_6",
+        "question": "A \\_\\_\\_ count is used to obtain a 1 second timer from a 30MHz clock? (enter numerical answer)",
+        "options": [
+          {
+            "text": "30000000",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "Timers \\& PWM_7",
+        "question": "The watchdog timer (WDT) is designed to restart a system if the software crashes",
+        "options": [
+          {
+            "text": "True",
+            "isCorrect": true
+          },
+          {
+            "text": "False",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "Timers \\& PWM_8",
+        "question": "'A' is one cycle, 'B' is the high. 'A' must be \\_\\_\\_ to make a 40% duty-cycle, if 'B' is 30ms. (ensure you include the units too)",
+        "options": [
+          {
+            "text": "75ms",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      }
+    ]
+  },
+  {
+    "topic": "ADC",
+    "questions": [
+      {
+        "id": "ADC_1",
+        "question": "If an input signal to an ADC raises slightly above Vref, then it is",
+        "options": [
+          {
+            "text": "Ignored until the voltage drops below Vref",
+            "isCorrect": false
+          },
+          {
+            "text": "Destroyed",
+            "isCorrect": false
+          },
+          {
+            "text": "Clipped",
+            "isCorrect": true
+          },
+          {
+            "text": "Measured as a 0",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "ADC_2",
+        "question": "A transducer",
+        "options": [
+          {
+            "text": "Is a digital device used to measure voltage",
+            "isCorrect": false
+          },
+          {
+            "text": "Converts a signal from one form into another",
+            "isCorrect": true
+          },
+          {
+            "text": "Channels the energy emitted by the Tesseract",
+            "isCorrect": false
+          },
+          {
+            "text": "Always crosses between analogue and digital domains",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "ADC_3",
+        "question": "Quantization process is generally \\_\\_\\_\\_\\_\\_\\_\\_\\_\\_ and results in information \\_\\_\\_\\_\\_\\_\\_\\_\\_\\_ .",
+        "options": [
+          {
+            "text": "irreversible, loss",
+            "isCorrect": true
+          },
+          {
+            "text": "reversible, loss",
+            "isCorrect": false
+          },
+          {
+            "text": "irreversible, gain",
+            "isCorrect": false
+          },
+          {
+            "text": "reversible, gain",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "ADC_4",
+        "question": "A signal that ranges from 0v to 3.3v is fed into a 7-bit ADC.  What is the representation of sampled analog voltage of 0.12V? (Assume the error is between 0 to 1 least significant bit)",
+        "options": [
+          {
+            "text": "0x12",
+            "isCorrect": false
+          },
+          {
+            "text": "001 0010b",
+            "isCorrect": false
+          },
+          {
+            "text": "000 0110b",
+            "isCorrect": false
+          },
+          {
+            "text": "0x04",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "ADC_5",
+        "question": "When referring to an ADC, quantisation means",
+        "options": [
+          {
+            "text": "The sample rate at which a sample is converted to digital",
+            "isCorrect": false
+          },
+          {
+            "text": "The sample is converted to analogue by a DAC",
+            "isCorrect": false
+          },
+          {
+            "text": "The biggest (maximum) value that the sample can reach",
+            "isCorrect": false
+          },
+          {
+            "text": "The number of discrete levels used to represent a sample",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "ADC_6",
+        "question": "An ADC should quantise a continuous signal differently to how it quantises a single value.",
+        "options": [
+          {
+            "text": "True",
+            "isCorrect": false
+          },
+          {
+            "text": "False",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "ADC_7",
+        "question": "Select which of the following occurs within an ADC (tick all that apply):",
+        "options": [
+          {
+            "text": "Transduction",
+            "isCorrect": false
+          },
+          {
+            "text": "Quantisation",
+            "isCorrect": true
+          },
+          {
+            "text": "Sampling",
+            "isCorrect": true
+          },
+          {
+            "text": "Inversion",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": true
+      },
+      {
+        "id": "ADC_8",
+        "question": "Nyquist's theorem states that perfect reconstruction may be possible if the signal is sampled how fast?",
+        "options": [
+          {
+            "text": "As fast as the ADC can sample",
+            "isCorrect": false
+          },
+          {
+            "text": "With at least 2x as many bits as the signal should have",
+            "isCorrect": false
+          },
+          {
+            "text": "At least 2x faster than the highest frequency component",
+            "isCorrect": true
+          },
+          {
+            "text": "At least 48kHz",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "ADC_9",
+        "question": "What is the typical sample rate and data size of a CD-quality audio signal?",
+        "options": [
+          {
+            "text": "8-bits and 48kHz",
+            "isCorrect": false
+          },
+          {
+            "text": "20-bits and 24kHz",
+            "isCorrect": false
+          },
+          {
+            "text": "1kHz and 16-bits",
+            "isCorrect": true
+          },
+          {
+            "text": "256kHz and 32-bits",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      }
+    ]
+  },
+  {
+    "topic": "Embedded Operating System",
+    "questions": [
+      {
+        "id": "Embedded Operating System_1",
+        "question": "Which of these characteristics of Monolithic Kernel is false?",
+        "options": [
+          {
+            "text": "Hard to extend its functionality",
+            "isCorrect": false
+          },
+          {
+            "text": "Fast Execution",
+            "isCorrect": false
+          },
+          {
+            "text": "Both user services and kernel services are kept in the same address space",
+            "isCorrect": false
+          },
+          {
+            "text": "A service crash does not crash the whole system",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "Embedded Operating System_2",
+        "question": "A task is the smallest sequence of instructions that can be managed independently by an/a ....",
+        "options": [
+          {
+            "text": "scheduler",
+            "isCorrect": true
+          },
+          {
+            "text": "inter-process communication (IPC)",
+            "isCorrect": false
+          },
+          {
+            "text": "task control block (TCB)",
+            "isCorrect": false
+          },
+          {
+            "text": "interrupt",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "Embedded Operating System_3",
+        "question": "If a task calls the following function, it will always be placed into a \"blocked\" state for 250ms: vTaskDelay(250);",
+        "options": [
+          {
+            "text": "True",
+            "isCorrect": false
+          },
+          {
+            "text": "False",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "Embedded Operating System_4",
+        "question": "xTaskCreate(printfunction, \"AvgThread\", configMINIMAL\\_STACK\\_SIZE, NULL, TEST\\_TASK\\_PRIORITY, \\&printtask);",
+        "options": [
+          {
+            "text": "Priority-based scheduling will occur",
+            "isCorrect": false
+          },
+          {
+            "text": "Round-robin scheduling will occur",
+            "isCorrect": true
+          },
+          {
+            "text": "The program will crash at the instruction: \"for( ; ; )\"",
+            "isCorrect": false
+          },
+          {
+            "text": "The program will crash at the instruction: \"vTaskStartScheduler()\"",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "Embedded Operating System_5",
+        "question": "Task functions typically do not call \"return()\"",
+        "options": [
+          {
+            "text": "True",
+            "isCorrect": true
+          },
+          {
+            "text": "False",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "Embedded Operating System_6",
+        "question": "In FreeRTOS, the lowest priority interrupt (ISR) will interrupt the highest priority task.",
+        "options": [
+          {
+            "text": "True",
+            "isCorrect": true
+          },
+          {
+            "text": "False",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "Embedded Operating System_7",
+        "question": "Which Priority Driven Scheduling Algorithm is dynamic-priority based?",
+        "options": [
+          {
+            "text": "Deadline Monotonic Scheduling (DMS)",
+            "isCorrect": false
+          },
+          {
+            "text": "Rate Monotonic Scheduling (RMS)",
+            "isCorrect": false
+          },
+          {
+            "text": "Earliest Deadline First (EDF)",
+            "isCorrect": true
+          },
+          {
+            "text": "Least Slack Time (LST)",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "",
+        "multiSelect": true
+      },
+      {
+        "id": "Embedded Operating System_8",
+        "question": "Which service/feature is the most important for multi-tasking to work in an EOS?",
+        "options": [
+          {
+            "text": "inter-process communication",
+            "isCorrect": false
+          },
+          {
+            "text": "polling",
+            "isCorrect": false
+          },
+          {
+            "text": "context switch",
+            "isCorrect": true
+          },
+          {
+            "text": "memory management",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "Embedded Operating System_9",
+        "question": "Which of the following are considerations when selecting an RTOS? \\[Select 2]",
+        "options": [
+          {
+            "text": "Machine Learning",
+            "isCorrect": false
+          },
+          {
+            "text": "Decompilers",
+            "isCorrect": false
+          },
+          {
+            "text": "Debuggers",
+            "isCorrect": true
+          },
+          {
+            "text": "Features",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "",
+        "multiSelect": true
+      },
+      {
+        "id": "Embedded Operating System_10",
+        "question": "Which Task State occurs the least amount of time?",
+        "options": [
+          {
+            "text": "Terminated",
+            "isCorrect": true
+          },
+          {
+            "text": "Running",
+            "isCorrect": false
+          },
+          {
+            "text": "Ready",
+            "isCorrect": false
+          },
+          {
+            "text": "Blocked",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      }
+    ]
+  },
+  {
+    "topic": "TESTING",
+    "questions": [
+      {
+        "id": "TESTING_1",
+        "question": "JTAG can support which of the following (select all that apply):",
+        "options": [
+          {
+            "text": "Simulate code running in a virtual sandbox",
+            "isCorrect": false
+          },
+          {
+            "text": "Examine the contents of memory and program FLASH",
+            "isCorrect": true
+          },
+          {
+            "text": "Debug the CPU as well as internal peripherals",
+            "isCorrect": true
+          },
+          {
+            "text": "Allow single-stepping, breakpoints and watchpoints",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "",
+        "multiSelect": true
+      },
+      {
+        "id": "TESTING_2",
+        "question": "In embedded systems, what does \"real-time testing\" refer to?",
+        "options": [
+          {
+            "text": "Testing conducted by real users",
+            "isCorrect": false
+          },
+          {
+            "text": "Testing conducted under laboratory conditions",
+            "isCorrect": false
+          },
+          {
+            "text": "Testing conducted using real hardware components",
+            "isCorrect": false
+          },
+          {
+            "text": "Testing that assesses the system's ability to respond within a specific time frame",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "TESTING_3",
+        "question": "What is the primary goal of regression testing in embedded systems?",
+        "options": [
+          {
+            "text": "To ensure that new changes do not introduce defects into existing functionality",
+            "isCorrect": true
+          },
+          {
+            "text": "To test new features and functionality",
+            "isCorrect": false
+          },
+          {
+            "text": "To identify and fix security vulnerabilities",
+            "isCorrect": false
+          },
+          {
+            "text": "To validate hardware components",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "TESTING_4",
+        "question": "What is the purpose of boundary value analysis in embedded software testing?",
+        "options": [
+          {
+            "text": "To assess system security",
+            "isCorrect": false
+          },
+          {
+            "text": "To test the system's user interface",
+            "isCorrect": false
+          },
+          {
+            "text": "To check how the system handles extreme inputs",
+            "isCorrect": true
+          },
+          {
+            "text": "To validate hardware components",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "TESTING_5",
+        "question": "Choose the statement that is false for hardware-based debuggers like JTAG.",
+        "options": [
+          {
+            "text": "Breakpoint by replacing an instruction in memory with a trap",
+            "isCorrect": true
+          },
+          {
+            "text": "Ability to observe software execution in real time",
+            "isCorrect": false
+          },
+          {
+            "text": "Memory and I/O ports are accessible while running",
+            "isCorrect": false
+          },
+          {
+            "text": "Communicates with the debugging computer",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "TESTING_6",
+        "question": "For black box testing a unit under test (UUT), which of the following is true?",
+        "options": [
+          {
+            "text": "The test should contain all possible input values",
+            "isCorrect": false
+          },
+          {
+            "text": "The UUE internal behaviour is not a concern",
+            "isCorrect": true
+          },
+          {
+            "text": "Test values should be designed to match the code inside the UUE",
+            "isCorrect": false
+          },
+          {
+            "text": "The UUE  internal behaviour needs to be examined",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "TESTING_7",
+        "question": "What does \"Firmware\" refer to in the context of embedded systems?",
+        "options": [
+          {
+            "text": "Software that controls hardware devices",
+            "isCorrect": true
+          },
+          {
+            "text": "Hardware components of the system",
+            "isCorrect": false
+          },
+          {
+            "text": "User interface elements",
+            "isCorrect": false
+          },
+          {
+            "text": "Networking protocols",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "TESTING_8",
+        "question": "Which debugging technique would be the most appropriate for an ISR (interrupt sub routine)?",
+        "options": [
+          {
+            "text": "hardware breakpoints",
+            "isCorrect": true
+          },
+          {
+            "text": "LED monitoring",
+            "isCorrect": false
+          },
+          {
+            "text": "print statement",
+            "isCorrect": false
+          },
+          {
+            "text": "software breakpoints",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "TESTING_9",
+        "question": "Which testing technique focuses on testing the interactions between various software modules or components?",
+        "options": [
+          {
+            "text": "Stress testing",
+            "isCorrect": false
+          },
+          {
+            "text": "System testing",
+            "isCorrect": false
+          },
+          {
+            "text": "Integration testing",
+            "isCorrect": true
+          },
+          {
+            "text": "Unit testing",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "TESTING_10",
+        "question": "What is the purpose of black-box testing in embedded systems?",
+        "options": [
+          {
+            "text": "Testing hardware components",
+            "isCorrect": false
+          },
+          {
+            "text": "None of the above",
+            "isCorrect": false
+          },
+          {
+            "text": "Testing the internal structure of the software",
+            "isCorrect": false
+          },
+          {
+            "text": "Testing the functionality of the software without knowledge of its internal implementation",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "TESTING_11",
+        "question": "Which type of testing focuses on verifying the functionality of individual software modules or components?",
+        "options": [
+          {
+            "text": "System testing",
+            "isCorrect": false
+          },
+          {
+            "text": "Regression testing",
+            "isCorrect": false
+          },
+          {
+            "text": "Unit testing",
+            "isCorrect": true
+          },
+          {
+            "text": "Integration testing",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "TESTING_12",
+        "question": "What is the primary goal of code coverage analysis in embedded software testing?",
+        "options": [
+          {
+            "text": "Measuring the efficiency of code execution",
+            "isCorrect": false
+          },
+          {
+            "text": "Assessing system performance",
+            "isCorrect": false
+          },
+          {
+            "text": "Evaluating the completeness of test cases",
+            "isCorrect": true
+          },
+          {
+            "text": "Analyzing hardware components",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "TESTING_13",
+        "question": "Which statement about coding errors is true for a typical software project",
+        "options": [
+          {
+            "text": "You can't find all defects, no matter what",
+            "isCorrect": true
+          },
+          {
+            "text": "Careful testing is needed to remove all errors",
+            "isCorrect": false
+          },
+          {
+            "text": "Good programmers don't write code with errors",
+            "isCorrect": false
+          },
+          {
+            "text": "Good software engineering practices mean no errors in code",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "TESTING_14",
+        "question": "Which testing phase involves testing the entire embedded system as a whole?",
+        "options": [
+          {
+            "text": "Performance testing",
+            "isCorrect": false
+          },
+          {
+            "text": "Unit testing",
+            "isCorrect": false
+          },
+          {
+            "text": "Integration testing",
+            "isCorrect": false
+          },
+          {
+            "text": "System testing",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "TESTING_15",
+        "question": "Sort the following technique from the least intrusive (#1) to the most intrusive (#4).",
+        "options": [
+          {
+            "text": "Print statements 4",
+            "isCorrect": false
+          },
+          {
+            "text": "Hardware Breakpoints 2",
+            "isCorrect": false
+          },
+          {
+            "text": "Desk-checking",
+            "isCorrect": true
+          },
+          {
+            "text": "LED monitoring 3",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "TESTING_16",
+        "question": "Test cases contain a definition of which of the following (select all that apply):",
+        "options": [
+          {
+            "text": "Wanted output",
+            "isCorrect": true
+          },
+          {
+            "text": "Expected behaviour",
+            "isCorrect": true
+          },
+          {
+            "text": "Only correct input values",
+            "isCorrect": false
+          },
+          {
+            "text": "Actual behaviour",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": true
+      },
+      {
+        "id": "TESTING_17",
+        "question": "Which aspect is the MOST important when performing debugging? (Select 2)",
+        "options": [
+          {
+            "text": "intrusiveness",
+            "isCorrect": true
+          },
+          {
+            "text": "stabilization",
+            "isCorrect": true
+          },
+          {
+            "text": "optimization",
+            "isCorrect": false
+          },
+          {
+            "text": "performance",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": true
+      },
+      {
+        "id": "TESTING_18",
+        "question": "Which testing technique involves feeding predefined inputs into the system and comparing the actual outputs with expected outputs?",
+        "options": [
+          {
+            "text": "White-box testing",
+            "isCorrect": false
+          },
+          {
+            "text": "Stress testing",
+            "isCorrect": false
+          },
+          {
+            "text": "Systems testing",
+            "isCorrect": false
+          },
+          {
+            "text": "Black-box testing",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "TESTING_19",
+        "question": "Boundary scan testing inside a microcontroller",
+        "options": [
+          {
+            "text": "Controls the CPU alone",
+            "isCorrect": false
+          },
+          {
+            "text": "Can intercept signals between CPU and external pins",
+            "isCorrect": true
+          },
+          {
+            "text": "Only controls the state of the external pins",
+            "isCorrect": false
+          },
+          {
+            "text": "Is a parallel, asynchronous test bus for the internal CPU",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "TESTING_20",
+        "question": "Which techniques are the most appropriate tool for measuring the timing of an interrupt. \\[choose 2]",
+        "options": [
+          {
+            "text": "Hardware timer unit",
+            "isCorrect": true
+          },
+          {
+            "text": "API to call the OS Clock",
+            "isCorrect": false
+          },
+          {
+            "text": "printf Statements",
+            "isCorrect": false
+          },
+          {
+            "text": "GPIO + Oscilloscope",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "",
+        "multiSelect": true
+      }
+    ]
+  },
+  {
+    "topic": "Optimise",
+    "questions": [
+      {
+        "id": "Optimise_1",
+        "question": "Select the three main classification for optimization in embedded systems.",
+        "options": [
+          {
+            "text": "Power",
+            "isCorrect": true
+          },
+          {
+            "text": "Performance",
+            "isCorrect": true
+          },
+          {
+            "text": "Compiler",
+            "isCorrect": false
+          },
+          {
+            "text": "Memory",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "",
+        "multiSelect": true
+      },
+      {
+        "id": "Optimise_2",
+        "question": "Which of the following will be affected by different software.",
+        "options": [
+          {
+            "text": "static leakage",
+            "isCorrect": false
+          },
+          {
+            "text": "dynamic power consumption",
+            "isCorrect": true
+          },
+          {
+            "text": "static power consumption",
+            "isCorrect": false
+          },
+          {
+            "text": "high clock frequency",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "Optimise_3",
+        "question": "Which of the following are optimization techniques for performance? (select four correct answer)",
+        "options": [
+          {
+            "text": "Functions calling conventions",
+            "isCorrect": true
+          },
+          {
+            "text": "Choosing the right data types",
+            "isCorrect": true
+          },
+          {
+            "text": "Hardware loops",
+            "isCorrect": true
+          },
+          {
+            "text": "Assembly inlining",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "",
+        "multiSelect": true
+      },
+      {
+        "id": "Optimise_4",
+        "question": "What is the immediate purpose of a shunt resistor?",
+        "options": [
+          {
+            "text": "to profile an application",
+            "isCorrect": false
+          },
+          {
+            "text": "to measure current flow",
+            "isCorrect": false
+          },
+          {
+            "text": "to measure voltage drop",
+            "isCorrect": true
+          },
+          {
+            "text": "to measure power consumption",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "Optimise_5",
+        "question": "Loop unrolling can work on dynamic number of iterations.",
+        "options": [
+          {
+            "text": "True",
+            "isCorrect": false
+          },
+          {
+            "text": "False",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "Optimise_6",
+        "question": "Several students proposed different implementations that give the same mathematical result. Which of the following versions would likely execute the fastest on this MCU? (Select all that apply.)",
+        "options": [
+          {
+            "text": "X = (A << 1) + (B \\* C)",
+            "isCorrect": true
+          },
+          {
+            "text": "X = (A \\* 2) + (C \\* B)",
+            "isCorrect": false
+          },
+          {
+            "text": "X = (A \\* 2) + (B \\* C)",
+            "isCorrect": false
+          },
+          {
+            "text": "X = A + A + (B \\* C)",
+            "isCorrect": true
+          },
+          {
+            "text": "X = (A + A) + (B \\* C)",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "",
+        "multiSelect": true
+      },
+      {
+        "id": "Optimise_7",
+        "question": "Select two methods that helps in minimizing power consumption.",
+        "options": [
+          {
+            "text": "loop unrolling",
+            "isCorrect": false
+          },
+          {
+            "text": "clock scaling",
+            "isCorrect": true
+          },
+          {
+            "text": "application scaling",
+            "isCorrect": false
+          },
+          {
+            "text": "voltage scaling",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "",
+        "multiSelect": true
+      },
+      {
+        "id": "Optimise_8",
+        "question": "A 100% CPU utilisation will give a  \\_\\_\\_\\_\\_\\_\\_\\_  power usage.",
+        "options": [
+          {
+            "text": "average",
+            "isCorrect": false
+          },
+          {
+            "text": "typical",
+            "isCorrect": false
+          },
+          {
+            "text": "worst-case",
+            "isCorrect": true
+          },
+          {
+            "text": "maximum",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "Optimise_9",
+        "question": "Floating point operations are encouraged in embedded systems.",
+        "options": [
+          {
+            "text": "True",
+            "isCorrect": false
+          },
+          {
+            "text": "False",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      }
+    ]
+  },
+  {
+    "topic": "Sensor Fusion",
+    "questions": [
+      {
+        "id": "Sensor Fusion_1",
+        "question": "What is the primary advantage of distributed sensor fusion over centralized fusion?",
+        "options": [
+          {
+            "text": "Simpler system design",
+            "isCorrect": false
+          },
+          {
+            "text": "Lower transmission bandwidth and faster computation",
+            "isCorrect": true
+          },
+          {
+            "text": "Higher accuracy",
+            "isCorrect": false
+          },
+          {
+            "text": "No need for synchronization",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "Sensor Fusion_2",
+        "question": "Select the statement that is true for the logic interface for these devices.",
+        "options": [
+          {
+            "text": "Both these devices cannot 'talk' to each other.",
+            "isCorrect": false
+          },
+          {
+            "text": "\"Raspberry Pi GPIO\" can be an Output and \"Sensor Pin\" can be an Input",
+            "isCorrect": false
+          },
+          {
+            "text": "\"Raspberry Pi GPIO\" can be an Input and \"Sensor Pin\" can be an Output",
+            "isCorrect": false
+          },
+          {
+            "text": "Both \"Raspberry Pi GPIO\" and \"Sensor Pin\" can be an Input and Output",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "Sensor Fusion_3",
+        "question": "A \\_\\_\\_\\_\\_\\_\\_\\_\\_\\_ is a device that converts energy from one form to another. Usually a \\_\\_\\_\\_\\_\\_\\_\\_\\_\\_ converts a signal in one form of energy to a signal in another. (Choose the best answer)",
+        "options": [
+          {
+            "text": "convertor, transducer",
+            "isCorrect": false
+          },
+          {
+            "text": "transducer, transducer",
+            "isCorrect": true
+          },
+          {
+            "text": "thermophile, thermometer",
+            "isCorrect": false
+          },
+          {
+            "text": "transformer, transducer",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "Sensor Fusion_4",
+        "question": "Raspberry Pi's GPIO pins can support which of the following:",
+        "options": [
+          {
+            "text": "Analogue output only",
+            "isCorrect": false
+          },
+          {
+            "text": "Digital input and output",
+            "isCorrect": true
+          },
+          {
+            "text": "Analogue input and digital output",
+            "isCorrect": false
+          },
+          {
+            "text": "Analogue and digital input and output",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "Sensor Fusion_5",
+        "question": "In the context of preprocessing sensor data, which method is best suited for estimating future values based on current and past readings?",
+        "options": [
+          {
+            "text": "Smoothing",
+            "isCorrect": false
+          },
+          {
+            "text": "Kalman filter",
+            "isCorrect": true
+          },
+          {
+            "text": "Averaging",
+            "isCorrect": false
+          },
+          {
+            "text": "All of them",
+            "isCorrect": false
+          },
+          {
+            "text": "Filtering",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "Sensor Fusion_6",
+        "question": "A typical sensor will perform signal conditioning before sending out the signal in a digital format. Which of the following does not occur within a sensor module?",
+        "options": [
+          {
+            "text": "Amplification",
+            "isCorrect": false
+          },
+          {
+            "text": "Analog-to-Digital Convertor",
+            "isCorrect": false
+          },
+          {
+            "text": "Control logic",
+            "isCorrect": false
+          },
+          {
+            "text": "Digital-to-Analog Convertor",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "Sensor Fusion_7",
+        "question": "What is the main function of an actuator in an embedded system?",
+        "options": [
+          {
+            "text": "To amplify sensor signals",
+            "isCorrect": false
+          },
+          {
+            "text": "To sense environmental changes",
+            "isCorrect": false
+          },
+          {
+            "text": "To convert a control signal into a physical action",
+            "isCorrect": true
+          },
+          {
+            "text": "To digitize analog signals",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "Sensor Fusion_8",
+        "question": "Which of the following is not part of a Servo Motor (e.g. SG90)?",
+        "options": [
+          {
+            "text": "inductor",
+            "isCorrect": true
+          },
+          {
+            "text": "potentiometer",
+            "isCorrect": false
+          },
+          {
+            "text": "microcontroller",
+            "isCorrect": false
+          },
+          {
+            "text": "motor",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "Sensor Fusion_9",
+        "question": "A sensor is a device that receives a stimulus and responds with an electrical signal. Electrical here mean a signal that can be channeled, amplified, and modified by electronic devices. Which of the following is NOT a type of response that the microcontroller can handle?",
+        "options": [
+          {
+            "text": "Power",
+            "isCorrect": false
+          },
+          {
+            "text": "Charge",
+            "isCorrect": false
+          },
+          {
+            "text": "Acceleration",
+            "isCorrect": true
+          },
+          {
+            "text": "Induction",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "Sensor Fusion_10",
+        "question": "Which of the following is NOT a stimulus.",
+        "options": [
+          {
+            "text": "Sound",
+            "isCorrect": false
+          },
+          {
+            "text": "Contempt",
+            "isCorrect": true
+          },
+          {
+            "text": "Pressure",
+            "isCorrect": false
+          },
+          {
+            "text": "Displacement",
+            "isCorrect": false
+          },
+          {
+            "text": "Which if the following is not typically used to detect change in a sensor?",
+            "isCorrect": false
+          },
+          {
+            "text": "Material of conductive plates",
+            "isCorrect": true
+          },
+          {
+            "text": "Material of dielectric",
+            "isCorrect": false
+          },
+          {
+            "text": "Area of conductive plates",
+            "isCorrect": false
+          },
+          {
+            "text": "Distance between conductive plates",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": true
+      },
+      {
+        "id": "Sensor Fusion_11",
+        "question": "In the context of sensor fusion by competition level, which scenario best exemplifies \"coordinated fusion\"?",
+        "options": [
+          {
+            "text": "Combining radar and LiDAR to detect the same object",
+            "isCorrect": false
+          },
+          {
+            "text": "Using two cameras placed apart to estimate depth via stereo vision",
+            "isCorrect": true
+          },
+          {
+            "text": "Using two temperature sensors to cross-check room temperature",
+            "isCorrect": false
+          },
+          {
+            "text": "Merging GPS and accelerometer data for position estimation",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      },
+      {
+        "id": "Sensor Fusion_12",
+        "question": "The following sensor uses capacitance to detect water level. Which change in factor are we trying to detect?",
+        "options": [
+          {
+            "text": "Material of conductive plates",
+            "isCorrect": false
+          },
+          {
+            "text": "Distance between conductive plates",
+            "isCorrect": false
+          },
+          {
+            "text": "Area of conductive plates",
+            "isCorrect": true
+          },
+          {
+            "text": "Distance between Dielectric",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false
+      }
+    ]
+  }
+]
