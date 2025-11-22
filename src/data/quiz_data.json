@@ -24,7 +24,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "Introduction to Embedded Systems_2",
@@ -48,7 +49,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "Introduction to Embedded Systems_3",
@@ -72,7 +74,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "Introduction to Embedded Systems_4",
@@ -96,7 +99,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "Introduction to Embedded Systems_5",
@@ -120,7 +124,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "Introduction to Embedded Systems_6",
@@ -144,7 +149,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "Introduction to Embedded Systems_7",
@@ -168,7 +174,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": true
+        "multiSelect": true,
+        "type": "multiple_choice"
       },
       {
         "id": "Introduction to Embedded Systems_8",
@@ -192,7 +199,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": true
+        "multiSelect": true,
+        "type": "multiple_choice"
       },
       {
         "id": "Introduction to Embedded Systems_9",
@@ -220,7 +228,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": true
+        "multiSelect": true,
+        "type": "multiple_choice"
       },
       {
         "id": "Introduction to Embedded Systems_10",
@@ -244,7 +253,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": true
+        "multiSelect": true,
+        "type": "multiple_choice"
       },
       {
         "id": "Introduction to Embedded Systems_11",
@@ -268,7 +278,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "Introduction to Embedded Systems_12",
@@ -296,7 +307,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "Introduction to Embedded Systems_13",
@@ -320,7 +332,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "Introduction to Embedded Systems_14",
@@ -344,7 +357,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "Introduction to Embedded Systems_15",
@@ -368,7 +382,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "Introduction to Embedded Systems_16",
@@ -392,7 +407,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": true
+        "multiSelect": true,
+        "type": "multiple_choice"
       },
       {
         "id": "Introduction to Embedded Systems_17",
@@ -416,7 +432,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       }
     ]
   },
@@ -428,7 +445,7 @@
         "question": "When monitoring a specific bit, for example, bit 5 of register P0, what expression creates a mask to target that bit?",
         "options": [
           {
-            "text": "(P0 \\& 5)",
+            "text": "(P0 & 5)",
             "isCorrect": false
           },
           {
@@ -445,27 +462,29 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "Embedded C_2",
-        "question": "17 \\&\\& 23 = ?",
+        "question": "17 && 23 = ?",
         "options": [
           {
             "text": "6",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "text": "40",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "text": "0",
-            "isCorrect": false
+            "isCorrect": true
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "fill_in_the_blank"
       },
       {
         "id": "Embedded C_3",
@@ -493,7 +512,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "Embedded C_4",
@@ -517,7 +537,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "Embedded C_5",
@@ -545,7 +566,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "Embedded C_6",
@@ -569,7 +591,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "Embedded C_7",
@@ -593,7 +616,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "Embedded C_8",
@@ -617,14 +641,15 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "Embedded C_9",
         "question": "Which operator is used to find the remainder of an integer division?",
         "options": [
           {
-            "text": "\\-",
+            "text": "-",
             "isCorrect": false
           },
           {
@@ -640,16 +665,17 @@
             "isCorrect": false
           },
           {
-            "text": "\\*",
+            "text": "*",
             "isCorrect": false
           },
           {
-            "text": "\\+",
+            "text": "+",
             "isCorrect": false
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "Embedded C_10",
@@ -673,11 +699,12 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "Embedded C_11",
-        "question": "If you declare an array int arr\\[5], what is the index of the last element?",
+        "question": "If you declare an array int arr[5], what is the index of the last element?",
         "options": [
           {
             "text": "0",
@@ -701,7 +728,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "Embedded C_12",
@@ -745,7 +773,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "Embedded C_13",
@@ -769,7 +798,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "Embedded C_14",
@@ -785,7 +815,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "Embedded C_15",
@@ -805,7 +836,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": true
+        "multiSelect": true,
+        "type": "multiple_choice"
       },
       {
         "id": "Embedded C_16",
@@ -829,7 +861,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "Embedded C_17",
@@ -853,19 +886,21 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "Embedded C_18",
         "question": "Match the description to the operator",
         "options": [
           {
-            "text": "\\& Bitwise AND",
-            "isCorrect": false
+            "text": "& Bitwise AND",
+            "isCorrect": true
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "fill_in_the_blank"
       }
     ]
   },
@@ -894,7 +929,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "GPIO_2",
@@ -910,7 +946,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "GPIO_3",
@@ -926,11 +963,12 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "GPIO_4",
-        "question": "17 \\&\\& 23 = ?",
+        "question": "17 && 23 = ?",
         "options": [
           {
             "text": "FALSE",
@@ -954,7 +992,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "GPIO_5",
@@ -978,7 +1017,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "GPIO_6",
@@ -1002,7 +1042,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "GPIO_7",
@@ -1026,7 +1067,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "GPIO_8",
@@ -1042,7 +1084,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "GPIO_9",
@@ -1066,7 +1109,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "GPIO_10",
@@ -1082,7 +1126,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "GPIO_11",
@@ -1106,7 +1151,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "GPIO_12",
@@ -1122,15 +1168,16 @@
           },
           {
             "text": "When the peripheral is a long distance away",
-            "isCorrect": true
+            "isCorrect": false
           },
           {
             "text": "When the peripheral specifies a very unusual custom interfacing protocol",
-            "isCorrect": true
+            "isCorrect": false
           }
         ],
         "explanation": "",
-        "multiSelect": true
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "GPIO_13",
@@ -1154,7 +1201,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "GPIO_14",
@@ -1178,11 +1226,12 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "GPIO_15",
-        "question": "17 \\&\\& 0 = ?",
+        "question": "17 && 0 = ?",
         "options": [
           {
             "text": "17",
@@ -1206,7 +1255,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": true
+        "multiSelect": true,
+        "type": "multiple_choice"
       }
     ]
   },
@@ -1230,26 +1280,6 @@
             "isCorrect": false
           },
           {
-            "text": "Only Unit A can transmit, Unit B can only receive",
-            "isCorrect": false
-          }
-        ],
-        "explanation": "",
-        "multiSelect": false
-      },
-      {
-        "id": "Digital Communication_2",
-        "question": "A 7-bit ascii data is transmitted with 1 start bit, 1 stop bit and 1 parity bit at a baud rate of 9600. How fast is the 7-bit ascii data being transmitted?",
-        "options": [
-          {
-            "text": "115 ms",
-            "isCorrect": false
-          },
-          {
-            "text": "042 ms",
-            "isCorrect": true
-          },
-          {
             "text": "104 ms",
             "isCorrect": false
           },
@@ -1259,10 +1289,11 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
-        "id": "Digital Communication_3",
+        "id": "Digital Communication_2",
         "question": "Which digital communication protocol is asynchronous?",
         "options": [
           {
@@ -1283,10 +1314,11 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
-        "id": "Digital Communication_4",
+        "id": "Digital Communication_3",
         "question": "We need to provide slave address for UART communication protocol.",
         "options": [
           {
@@ -1299,10 +1331,11 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
-        "id": "Digital Communication_5",
+        "id": "Digital Communication_4",
         "question": "A synchronous communications link has a separate clock wire",
         "options": [
           {
@@ -1315,10 +1348,11 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
-        "id": "Digital Communication_6",
+        "id": "Digital Communication_5",
         "question": "The I2C protocol has separate wires for transmit and receive (called MOSI and MISO)",
         "options": [
           {
@@ -1331,10 +1365,11 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
-        "id": "Digital Communication_7",
+        "id": "Digital Communication_6",
         "question": "An SPI master can only have one slave",
         "options": [
           {
@@ -1347,10 +1382,11 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
-        "id": "Digital Communication_8",
+        "id": "Digital Communication_7",
         "question": "In EIA/RS-232, what indicates that a character is about to be transmitted",
         "options": [
           {
@@ -1371,10 +1407,11 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
-        "id": "Digital Communication_9",
+        "id": "Digital Communication_8",
         "question": "How is data transmitted onto the serial console?",
         "options": [
           {
@@ -1395,10 +1432,11 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
-        "id": "Digital Communication_10",
+        "id": "Digital Communication_9",
         "question": "Using a single parity bit when transmitting a 7-bit character over EIA/RS-232, you can",
         "options": [
           {
@@ -1419,7 +1457,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       }
     ]
   },
@@ -1448,7 +1487,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "Interrupts_2",
@@ -1472,7 +1512,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "Interrupts_3",
@@ -1488,23 +1529,25 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "Interrupts_4",
-        "question": "A CPU can \\_\\_\\_ data onto a stack and later it must \\_\\_\\_ it off again",
+        "question": "A CPU can ___ data onto a stack and later it must ___ it off again",
         "options": [
           {
             "text": "push",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "text": "pop",
-            "isCorrect": false
+            "isCorrect": true
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "fill_in_the_blank"
       },
       {
         "id": "Interrupts_5",
@@ -1512,15 +1555,16 @@
         "options": [
           {
             "text": "True",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "text": "False",
-            "isCorrect": true
+            "isCorrect": false
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "Interrupts_6",
@@ -1544,7 +1588,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "Interrupts_7",
@@ -1568,7 +1613,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "Interrupts_8",
@@ -1592,7 +1638,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "Interrupts_9",
@@ -1616,7 +1663,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "Interrupts_10",
@@ -1632,7 +1680,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "Interrupts_11",
@@ -1656,7 +1705,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "Interrupts_12",
@@ -1680,7 +1730,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "Interrupts_13",
@@ -1696,15 +1747,16 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       }
     ]
   },
   {
-    "topic": "Timers \\& PWM",
+    "topic": "Timers & PWM",
     "questions": [
       {
-        "id": "Timers \\& PWM_1",
+        "id": "Timers & PWM_1",
         "question": "The count-down timer free-running mode means",
         "options": [
           {
@@ -1725,10 +1777,11 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
-        "id": "Timers \\& PWM_2",
+        "id": "Timers & PWM_2",
         "question": "CPU can execute other code while the timer is running concurrently.",
         "options": [
           {
@@ -1741,10 +1794,11 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
-        "id": "Timers \\& PWM_3",
+        "id": "Timers & PWM_3",
         "question": "Inside a microcontroller, a \"timer\" is a/an ...",
         "options": [
           {
@@ -1765,10 +1819,11 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
-        "id": "Timers \\& PWM_4",
+        "id": "Timers & PWM_4",
         "question": "A 1Hz clock is",
         "options": [
           {
@@ -1789,10 +1844,11 @@
           }
         ],
         "explanation": "",
-        "multiSelect": true
+        "multiSelect": true,
+        "type": "multiple_choice"
       },
       {
-        "id": "Timers \\& PWM_5",
+        "id": "Timers & PWM_5",
         "question": "2. Flag/Interrupt set when the counter wraps around 1st clock edge after zero.",
         "options": [
           {
@@ -1813,22 +1869,24 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
-        "id": "Timers \\& PWM_6",
-        "question": "A \\_\\_\\_ count is used to obtain a 1 second timer from a 30MHz clock? (enter numerical answer)",
+        "id": "Timers & PWM_6",
+        "question": "A ___ count is used to obtain a 1 second timer from a 30MHz clock? (enter numerical answer)",
         "options": [
           {
             "text": "30000000",
-            "isCorrect": false
+            "isCorrect": true
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "fill_in_the_blank"
       },
       {
-        "id": "Timers \\& PWM_7",
+        "id": "Timers & PWM_7",
         "question": "The watchdog timer (WDT) is designed to restart a system if the software crashes",
         "options": [
           {
@@ -1841,19 +1899,21 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
-        "id": "Timers \\& PWM_8",
-        "question": "'A' is one cycle, 'B' is the high. 'A' must be \\_\\_\\_ to make a 40% duty-cycle, if 'B' is 30ms. (ensure you include the units too)",
+        "id": "Timers & PWM_8",
+        "question": "'A' is one cycle, 'B' is the high. 'A' must be ___ to make a 40% duty-cycle, if 'B' is 30ms. (ensure you include the units too)",
         "options": [
           {
             "text": "75ms",
-            "isCorrect": false
+            "isCorrect": true
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "fill_in_the_blank"
       }
     ]
   },
@@ -1882,7 +1942,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "ADC_2",
@@ -1906,11 +1967,12 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "ADC_3",
-        "question": "Quantization process is generally \\_\\_\\_\\_\\_\\_\\_\\_\\_\\_ and results in information \\_\\_\\_\\_\\_\\_\\_\\_\\_\\_ .",
+        "question": "Quantization process is generally __________  and results in information __________ .",
         "options": [
           {
             "text": "irreversible, loss",
@@ -1930,7 +1992,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "ADC_4",
@@ -1954,7 +2017,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "ADC_5",
@@ -1978,7 +2042,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "ADC_6",
@@ -1994,7 +2059,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "ADC_7",
@@ -2018,7 +2084,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": true
+        "multiSelect": true,
+        "type": "multiple_choice"
       },
       {
         "id": "ADC_8",
@@ -2042,7 +2109,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "ADC_9",
@@ -2066,7 +2134,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       }
     ]
   },
@@ -2095,7 +2164,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "Embedded Operating System_2",
@@ -2119,7 +2189,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "Embedded Operating System_3",
@@ -2135,7 +2206,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "Embedded Operating System_4",
@@ -2155,7 +2227,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "Embedded Operating System_5",
@@ -2171,7 +2244,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "Embedded Operating System_6",
@@ -2187,7 +2261,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "Embedded Operating System_7",
@@ -2211,7 +2286,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": true
+        "multiSelect": true,
+        "type": "multiple_choice"
       },
       {
         "id": "Embedded Operating System_8",
@@ -2235,11 +2311,12 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "Embedded Operating System_9",
-        "question": "Which of the following are considerations when selecting an RTOS? \\[Select 2]",
+        "question": "Which of the following are considerations when selecting an RTOS? [Select 2]",
         "options": [
           {
             "text": "Machine Learning",
@@ -2259,7 +2336,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": true
+        "multiSelect": true,
+        "type": "multiple_choice"
       },
       {
         "id": "Embedded Operating System_10",
@@ -2283,7 +2361,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       }
     ]
   },
@@ -2312,7 +2391,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": true
+        "multiSelect": true,
+        "type": "multiple_choice"
       },
       {
         "id": "TESTING_2",
@@ -2336,7 +2416,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "TESTING_3",
@@ -2360,7 +2441,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "TESTING_4",
@@ -2384,7 +2466,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "TESTING_5",
@@ -2408,7 +2491,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "TESTING_6",
@@ -2432,7 +2516,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "TESTING_7",
@@ -2456,7 +2541,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "TESTING_8",
@@ -2480,7 +2566,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "TESTING_9",
@@ -2504,7 +2591,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "TESTING_10",
@@ -2528,7 +2616,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "TESTING_11",
@@ -2552,7 +2641,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "TESTING_12",
@@ -2576,7 +2666,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "TESTING_13",
@@ -2600,7 +2691,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "TESTING_14",
@@ -2624,7 +2716,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "TESTING_15",
@@ -2648,7 +2741,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "TESTING_16",
@@ -2672,7 +2766,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": true
+        "multiSelect": true,
+        "type": "multiple_choice"
       },
       {
         "id": "TESTING_17",
@@ -2696,7 +2791,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": true
+        "multiSelect": true,
+        "type": "multiple_choice"
       },
       {
         "id": "TESTING_18",
@@ -2720,7 +2816,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "TESTING_19",
@@ -2744,11 +2841,12 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "TESTING_20",
-        "question": "Which techniques are the most appropriate tool for measuring the timing of an interrupt. \\[choose 2]",
+        "question": "Which techniques are the most appropriate tool for measuring the timing of an interrupt. [choose 2]",
         "options": [
           {
             "text": "Hardware timer unit",
@@ -2768,7 +2866,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": true
+        "multiSelect": true,
+        "type": "multiple_choice"
       }
     ]
   },
@@ -2797,7 +2896,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": true
+        "multiSelect": true,
+        "type": "multiple_choice"
       },
       {
         "id": "Optimise_2",
@@ -2821,7 +2921,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "Optimise_3",
@@ -2845,7 +2946,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": true
+        "multiSelect": true,
+        "type": "multiple_choice"
       },
       {
         "id": "Optimise_4",
@@ -2869,7 +2971,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "Optimise_5",
@@ -2885,35 +2988,37 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "Optimise_6",
         "question": "Several students proposed different implementations that give the same mathematical result. Which of the following versions would likely execute the fastest on this MCU? (Select all that apply.)",
         "options": [
           {
-            "text": "X = (A << 1) + (B \\* C)",
+            "text": "X = (A << 1) + (B * C)",
             "isCorrect": true
           },
           {
-            "text": "X = (A \\* 2) + (C \\* B)",
+            "text": "X = (A * 2) + (C * B)",
             "isCorrect": false
           },
           {
-            "text": "X = (A \\* 2) + (B \\* C)",
+            "text": "X = (A * 2) + (B * C)",
             "isCorrect": false
           },
           {
-            "text": "X = A + A + (B \\* C)",
+            "text": "X = A + A + (B * C)",
             "isCorrect": true
           },
           {
-            "text": "X = (A + A) + (B \\* C)",
+            "text": "X = (A + A) + (B * C)",
             "isCorrect": true
           }
         ],
         "explanation": "",
-        "multiSelect": true
+        "multiSelect": true,
+        "type": "multiple_choice"
       },
       {
         "id": "Optimise_7",
@@ -2937,11 +3042,12 @@
           }
         ],
         "explanation": "",
-        "multiSelect": true
+        "multiSelect": true,
+        "type": "multiple_choice"
       },
       {
         "id": "Optimise_8",
-        "question": "A 100% CPU utilisation will give a  \\_\\_\\_\\_\\_\\_\\_\\_  power usage.",
+        "question": "A 100% CPU utilisation will give a  ________  power usage.",
         "options": [
           {
             "text": "average",
@@ -2961,7 +3067,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "Optimise_9",
@@ -2977,7 +3084,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       }
     ]
   },
@@ -3006,7 +3114,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "Sensor Fusion_2",
@@ -3018,7 +3127,7 @@
           },
           {
             "text": "\"Raspberry Pi GPIO\" can be an Output and \"Sensor Pin\" can be an Input",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "text": "\"Raspberry Pi GPIO\" can be an Input and \"Sensor Pin\" can be an Output",
@@ -3026,15 +3135,16 @@
           },
           {
             "text": "Both \"Raspberry Pi GPIO\" and \"Sensor Pin\" can be an Input and Output",
-            "isCorrect": true
+            "isCorrect": false
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "Sensor Fusion_3",
-        "question": "A \\_\\_\\_\\_\\_\\_\\_\\_\\_\\_ is a device that converts energy from one form to another. Usually a \\_\\_\\_\\_\\_\\_\\_\\_\\_\\_ converts a signal in one form of energy to a signal in another. (Choose the best answer)",
+        "question": "A ____________ is a device that converts energy from one form to another. Usually a __________ converts a signal in one form of energy to a signal in another. (Choose the best answer)",
         "options": [
           {
             "text": "convertor, transducer",
@@ -3054,7 +3164,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "Sensor Fusion_4",
@@ -3078,7 +3189,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "Sensor Fusion_5",
@@ -3106,7 +3218,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "Sensor Fusion_6",
@@ -3130,7 +3243,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "Sensor Fusion_7",
@@ -3154,7 +3268,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "Sensor Fusion_8",
@@ -3178,7 +3293,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "Sensor Fusion_9",
@@ -3202,7 +3318,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "Sensor Fusion_10",
@@ -3226,7 +3343,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "Sensor Fusion_11",
@@ -3250,7 +3368,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "Sensor Fusion_12",
@@ -3274,7 +3393,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       },
       {
         "id": "Sensor Fusion_13",
@@ -3298,7 +3418,8 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false
+        "multiSelect": false,
+        "type": "multiple_choice"
       }
     ]
   }

@@ -211,7 +211,7 @@ Objection file
 
 **When monitoring a specific bit, for example, bit 5 of register P0, what expression creates a mask to target that bit?**
 
-(P0 \& 5)
+(P0 & 5)
 
 (5 << 1)
 
@@ -221,7 +221,7 @@ Objection file
 
 
 
-**17 \&\& 23 = ?**
+**17 && 23 = ?**
 
 1 1
 
@@ -310,7 +310,7 @@ Dividing the number by 2 to the power of N
 
 **Which operator is used to find the remainder of an integer division?**
 
-\-
+-
 
 % 1
 
@@ -318,9 +318,9 @@ Dividing the number by 2 to the power of N
 
 /
 
-\*
+*
 
-\+
++
 
 
 
@@ -336,7 +336,7 @@ Dividing the number by 2 to the power of N
 
 
 
-**If you declare an array int arr\[5], what is the index of the last element?**
+**If you declare an array int arr[5], what is the index of the last element?**
 
 0
 
@@ -434,11 +434,11 @@ Const variable
 
 **Match the description to the operator**
 
-\& Bitwise AND
+& Bitwise AND
 
 
 
-\&\& Logical AND
+&& Logical AND
 
 
 
@@ -484,7 +484,7 @@ False 1
 
 
 
-**17 \&\& 23 = ?**
+**17 && 23 = ?**
 
 1 1
 
@@ -580,9 +580,9 @@ When the peripheral is read-only, and you can't write to it
 
 When you can use a built-in bus like I2C or SPI 1
 
-When the peripheral is a long distance away 1
+When the peripheral is a long distance away 
 
-When the peripheral specifies a very unusual custom interfacing protocol 1
+When the peripheral specifies a very unusual custom interfacing protocol 
 
 
 
@@ -610,7 +610,7 @@ It is a safe way to debounce input signals
 
 
 
-**17 \&\& 0 = ?**
+**17 && 0 = ?**
 
 17
 
@@ -635,17 +635,6 @@ Units A and B take turns to transmit 1
 Units A and B transmit at the same time
 
 Unit A sends half of the data, then unit B sends the other half
-
-Only Unit A can transmit, Unit B can only receive
-
-
-
-**A 7-bit ascii data is transmitted with 1 start bit, 1 stop bit and 1 parity bit at a baud rate of 9600. How fast is the 7-bit ascii data being transmitted?**
-
-0.115 ms
-
-1.042 ms 1
-
 0.104 ms
 
 1.146 ms
@@ -765,20 +754,17 @@ True
 False 1
 
 
+**A CPU can ___ data onto a stack and later it must ___ it off again**
 
-**A CPU can \_\_\_ data onto a stack and later it must \_\_\_ it off again**
-
-push 
+push
 
 pop
 
-
-
 **The watchdog timer (WDT) is designed to restart a system if the software crashes**
 
-True 
+True 1
 
-False 1
+False 
 
 
 
@@ -870,7 +856,7 @@ False 1
 
 
 
-##### Timers \& PWM
+##### Timers & PWM
 
 **The count-down timer free-running mode means**
 
@@ -932,9 +918,9 @@ Free Running Mode 1
 
 
 
-**A \_\_\_ count is used to obtain a 1 second timer from a 30MHz clock? (enter numerical answer)**
+**A ___ count is used to obtain a 1 second timer from a 30MHz clock? (enter numerical answer)**
 
-30000000 
+30000000
 
 
 
@@ -946,7 +932,7 @@ False
 
 
 
-**'A' is one cycle, 'B' is the high. 'A' must be \_\_\_ to make a 40% duty-cycle, if 'B' is 30ms. (ensure you include the units too)**
+**'A' is one cycle, 'B' is the high. 'A' must be ___ to make a 40% duty-cycle, if 'B' is 30ms. (ensure you include the units too)**
 
 75ms
 
@@ -978,7 +964,7 @@ Always crosses between analogue and digital domains
 
 
 
-**Quantization process is generally \_\_\_\_\_\_\_\_\_\_ and results in information \_\_\_\_\_\_\_\_\_\_ .**
+**Quantization process is generally __________  and results in information __________ .**
 
 irreversible, loss 1
 
@@ -1094,12 +1080,11 @@ False 1
 
 **Which of the following statement is true based on the following code snippet?**
 
-**xTaskCreate(avg\_task, "AvgThread", configMINIMAL\_STACK\_SIZE, NULL, TEST\_TASK\_PRIORITY, NULL);**
+**xTaskCreate(avg_task, "AvgThread", configMINIMAL_STACK_SIZE, NULL, TEST_TASK_PRIORITY, NULL);**
 
-**xTaskCreate(simpleaverage, "TempThread", configMINIMAL\_STACK\_SIZE, NULL, TEST\_TASK\_PRIORITY, NULL);**
+**xTaskCreate(simpleaverage, "TempThread", configMINIMAL_STACK_SIZE, NULL, TEST_TASK_PRIORITY, NULL);**
 
-**xTaskCreate(printfunction, "AvgThread", configMINIMAL\_STACK\_SIZE, NULL, TEST\_TASK\_PRIORITY, \&printtask);**
-
+**xTaskCreate(printfunction, "AvgThread", configMINIMAL_STACK_SIZE, NULL, TEST_TASK_PRIORITY, &printtask);**
 
 
 Priority-based scheduling will occur 
@@ -1152,7 +1137,7 @@ memory management
 
 
 
-**Which of the following are considerations when selecting an RTOS? \[Select 2]**
+**Which of the following are considerations when selecting an RTOS? [Select 2]**
 
 Machine Learning
 
@@ -1406,7 +1391,7 @@ Is a parallel, asynchronous test bus for the internal CPU
 
 
 
-**Which techniques are the most appropriate tool for measuring the timing of an interrupt. \[choose 2]**
+**Which techniques are the most appropriate tool for measuring the timing of an interrupt. [choose 2]**
 
 Hardware timer unit 1
 
@@ -1482,15 +1467,15 @@ False 1
 
 **Several students proposed different implementations that give the same mathematical result. Which of the following versions would likely execute the fastest on this MCU? (Select all that apply.)**
 
-X = (A << 1) + (B \* C) 1
+X = (A << 1) + (B * C) 1
 
-X = (A \* 2) + (C \* B)
+X = (A * 2) + (C * B)
 
-X = (A \* 2) + (B \* C)
+X = (A * 2) + (B * C)
 
-X = A + A + (B \* C) 1
+X = A + A + (B * C) 1
 
-X = (A + A) + (B \* C) 1
+X = (A + A) + (B * C) 1
 
 
 
@@ -1506,7 +1491,7 @@ voltage scaling 1
 
 
 
-**A 100% CPU utilisation will give a  \_\_\_\_\_\_\_\_  power usage.**
+**A 100% CPU utilisation will give a  ________  power usage.**
 
 average
 
@@ -1548,15 +1533,15 @@ IMAGE
 
 Both these devices cannot 'talk' to each other.
 
-"Raspberry Pi GPIO" can be an Output and "Sensor Pin" can be an Input
+"Raspberry Pi GPIO" can be an Output and "Sensor Pin" can be an Input 1
 
 "Raspberry Pi GPIO" can be an Input and "Sensor Pin" can be an Output
 
-Both "Raspberry Pi GPIO" and "Sensor Pin" can be an Input and Output 1
+Both "Raspberry Pi GPIO" and "Sensor Pin" can be an Input and Output 
 
 
 
-**A \_\_\_\_\_\_\_\_\_\_ is a device that converts energy from one form to another. Usually a \_\_\_\_\_\_\_\_\_\_ converts a signal in one form of energy to a signal in another. (Choose the best answer)**
+**A ____________ is a device that converts energy from one form to another. Usually a __________ converts a signal in one form of energy to a signal in another. (Choose the best answer)**
 
 convertor, transducer
 
