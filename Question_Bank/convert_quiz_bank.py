@@ -119,7 +119,7 @@ def parse_quiz_bank(markdown_file):
 def main():
     # Paths
     script_dir = Path(__file__).parent
-    markdown_file = script_dir / "Embedded_quiz_bank.md"
+    markdown_file = script_dir.parent / "docs" / "Embedded_quiz_bank.md"
     output_file = script_dir.parent / "src" / "data" / "quiz_data.json"
     
     print(f"Reading quiz bank from: {markdown_file}")
