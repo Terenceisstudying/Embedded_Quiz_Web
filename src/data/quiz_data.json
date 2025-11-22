@@ -470,21 +470,25 @@
         "question": "17 && 23 = ?",
         "options": [
           {
-            "text": "6",
+            "text": "1",
             "isCorrect": true
+          },
+          {
+            "text": "6",
+            "isCorrect": false
           },
           {
             "text": "40",
-            "isCorrect": true
+            "isCorrect": false
           },
           {
             "text": "0",
-            "isCorrect": true
+            "isCorrect": false
           }
         ],
         "explanation": "",
         "multiSelect": false,
-        "type": "fill_in_the_blank"
+        "type": "multiple_choice"
       },
       {
         "id": "Embedded C_3",
@@ -711,6 +715,10 @@
             "isCorrect": false
           },
           {
+            "text": "1",
+            "isCorrect": false
+          },
+          {
             "text": "2",
             "isCorrect": false
           },
@@ -735,6 +743,10 @@
         "id": "Embedded C_12",
         "question": "How many different bitwise operators are there? (Assume its for Pico C SDK)",
         "options": [
+          {
+            "text": "1",
+            "isCorrect": false
+          },
           {
             "text": "2",
             "isCorrect": false
@@ -823,7 +835,11 @@
         "question": "In C, what numeric value represents TRUE in a conditional expression?",
         "options": [
           {
-            "text": "-",
+            "text": "-1",
+            "isCorrect": true
+          },
+          {
+            "text": "1",
             "isCorrect": true
           },
           {
@@ -894,13 +910,29 @@
         "question": "Match the description to the operator",
         "options": [
           {
-            "text": "& Bitwise AND",
+            "symbol": "&",
+            "description": "Bitwise AND",
+            "isCorrect": true
+          },
+          {
+            "symbol": "&&",
+            "description": "Logical AND",
+            "isCorrect": true
+          },
+          {
+            "symbol": "|",
+            "description": "Bitwise OR",
+            "isCorrect": true
+          },
+          {
+            "symbol": "||",
+            "description": "Logical OR",
             "isCorrect": true
           }
         ],
         "explanation": "",
         "multiSelect": false,
-        "type": "fill_in_the_blank"
+        "type": "matching"
       }
     ]
   },
@@ -971,6 +1003,10 @@
         "question": "17 && 23 = ?",
         "options": [
           {
+            "text": "1",
+            "isCorrect": true
+          },
+          {
             "text": "FALSE",
             "isCorrect": false
           },
@@ -992,7 +1028,7 @@
           }
         ],
         "explanation": "",
-        "multiSelect": false,
+        "multiSelect": true,
         "type": "multiple_choice"
       },
       {
@@ -1250,6 +1286,10 @@
             "isCorrect": false
           },
           {
+            "text": "1",
+            "isCorrect": false
+          },
+          {
             "text": "FALSE",
             "isCorrect": true
           }
@@ -1280,11 +1320,7 @@
             "isCorrect": false
           },
           {
-            "text": "104 ms",
-            "isCorrect": false
-          },
-          {
-            "text": "146 ms",
+            "text": "Only Unit A can transmit, Unit B can only receive",
             "isCorrect": false
           }
         ],
@@ -1294,6 +1330,31 @@
       },
       {
         "id": "Digital Communication_2",
+        "question": "A 7-bit ascii data is transmitted with 1 start bit, 1 stop bit and 1 parity bit at a baud rate of 9600. How fast is the 7-bit ascii data being transmitted?",
+        "options": [
+          {
+            "text": "0.115 ms",
+            "isCorrect": false
+          },
+          {
+            "text": "1.042 ms",
+            "isCorrect": true
+          },
+          {
+            "text": "0.104 ms",
+            "isCorrect": false
+          },
+          {
+            "text": "1.146 ms",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "multiSelect": false,
+        "type": "multiple_choice"
+      },
+      {
+        "id": "Digital Communication_3",
         "question": "Which digital communication protocol is asynchronous?",
         "options": [
           {
@@ -1318,7 +1379,7 @@
         "type": "multiple_choice"
       },
       {
-        "id": "Digital Communication_3",
+        "id": "Digital Communication_4",
         "question": "We need to provide slave address for UART communication protocol.",
         "options": [
           {
@@ -1335,7 +1396,7 @@
         "type": "multiple_choice"
       },
       {
-        "id": "Digital Communication_4",
+        "id": "Digital Communication_5",
         "question": "A synchronous communications link has a separate clock wire",
         "options": [
           {
@@ -1352,7 +1413,7 @@
         "type": "multiple_choice"
       },
       {
-        "id": "Digital Communication_5",
+        "id": "Digital Communication_6",
         "question": "The I2C protocol has separate wires for transmit and receive (called MOSI and MISO)",
         "options": [
           {
@@ -1369,7 +1430,7 @@
         "type": "multiple_choice"
       },
       {
-        "id": "Digital Communication_6",
+        "id": "Digital Communication_7",
         "question": "An SPI master can only have one slave",
         "options": [
           {
@@ -1386,7 +1447,7 @@
         "type": "multiple_choice"
       },
       {
-        "id": "Digital Communication_7",
+        "id": "Digital Communication_8",
         "question": "In EIA/RS-232, what indicates that a character is about to be transmitted",
         "options": [
           {
@@ -1411,7 +1472,7 @@
         "type": "multiple_choice"
       },
       {
-        "id": "Digital Communication_8",
+        "id": "Digital Communication_9",
         "question": "How is data transmitted onto the serial console?",
         "options": [
           {
@@ -1436,7 +1497,7 @@
         "type": "multiple_choice"
       },
       {
-        "id": "Digital Communication_9",
+        "id": "Digital Communication_10",
         "question": "Using a single parity bit when transmitting a 7-bit character over EIA/RS-232, you can",
         "options": [
           {
@@ -1688,15 +1749,15 @@
         "question": "In the lecture, we defined the utilisation for an interrupt as u = (h+c)/T. In general, utilisation is the percentage of time when the processor is busy and h is the timing overhead for handling the interrupt. Suppose the inter-arrival time between two events is 500 cycles and the processor needs 18 cycles for either a pop or a push. For an ISR which requires 20 cycles for completion, what is its utilisation?",
         "options": [
           {
-            "text": "6",
+            "text": "7.6",
             "isCorrect": false
           },
           {
-            "text": "6",
+            "text": "11.6",
             "isCorrect": false
           },
           {
-            "text": "2",
+            "text": "11.2",
             "isCorrect": true
           },
           {
@@ -1849,7 +1910,7 @@
       },
       {
         "id": "Timers & PWM_5",
-        "question": "2. Flag/Interrupt set when the counter wraps around 1st clock edge after zero.",
+        "question": "Which meets the below conditions?\n1. Counter wraps around to the maximum value after counting down to zero.\n2. Flag/Interrupt set when the counter wraps around 1st clock edge after zero.",
         "options": [
           {
             "text": "One-shot Mode",
@@ -2125,7 +2186,7 @@
             "isCorrect": false
           },
           {
-            "text": "1kHz and 16-bits",
+            "text": "44.1kHz and 16-bits",
             "isCorrect": true
           },
           {
@@ -2211,8 +2272,12 @@
       },
       {
         "id": "Embedded Operating System_4",
-        "question": "Priority-based scheduling will occur",
+        "question": "Which of the following statement is true based on the following code snippet?\nxTaskCreate(avg_task, \"AvgThread\", configMINIMAL_STACK_SIZE, NULL, TEST_TASK_PRIORITY, NULL);\nxTaskCreate(simpleaverage, \"TempThread\", configMINIMAL_STACK_SIZE, NULL, TEST_TASK_PRIORITY, NULL);\nxTaskCreate(printfunction, \"AvgThread\", configMINIMAL_STACK_SIZE, NULL, TEST_TASK_PRIORITY, &printtask);",
         "options": [
+          {
+            "text": "Priority-based scheduling will occur",
+            "isCorrect": false
+          },
           {
             "text": "Round-robin scheduling will occur",
             "isCorrect": true
@@ -2724,25 +2789,29 @@
         "question": "Sort the following technique from the least intrusive (#1) to the most intrusive (#4).",
         "options": [
           {
-            "text": "Print statements 4",
-            "isCorrect": false
+            "text": "Print statements",
+            "isCorrect": false,
+            "rank": 4
           },
           {
-            "text": "Hardware Breakpoints 2",
-            "isCorrect": false
+            "text": "Hardware Breakpoints",
+            "isCorrect": false,
+            "rank": 2
           },
           {
             "text": "Desk-checking",
-            "isCorrect": true
+            "isCorrect": false,
+            "rank": 1
           },
           {
-            "text": "LED monitoring 3",
-            "isCorrect": false
+            "text": "LED monitoring",
+            "isCorrect": false,
+            "rank": 3
           }
         ],
         "explanation": "",
         "multiSelect": false,
-        "type": "multiple_choice"
+        "type": "ranking"
       },
       {
         "id": "TESTING_16",
@@ -2993,7 +3062,7 @@
       },
       {
         "id": "Optimise_6",
-        "question": "Several students proposed different implementations that give the same mathematical result. Which of the following versions would likely execute the fastest on this MCU? (Select all that apply.)",
+        "question": "A program running on a microcontroller without hardware multiplication support needs to compute the following result:\nX=A×2+B×C\nSeveral students proposed different implementations that give the same mathematical result. Which of the following versions would likely execute the fastest on this MCU? (Select all that apply.)",
         "options": [
           {
             "text": "X = (A << 1) + (B * C)",
@@ -3119,7 +3188,7 @@
       },
       {
         "id": "Sensor Fusion_2",
-        "question": "Select the statement that is true for the logic interface for these devices. (See image)",
+        "question": "Select the statement that is true for the logic interface for these devices.",
         "options": [
           {
             "text": "Both these devices cannot 'talk' to each other.",
@@ -3140,7 +3209,8 @@
         ],
         "explanation": "",
         "multiSelect": false,
-        "type": "multiple_choice"
+        "type": "multiple_choice",
+        "image": "logic_interface.png"
       },
       {
         "id": "Sensor Fusion_3",
@@ -3348,7 +3418,7 @@
       },
       {
         "id": "Sensor Fusion_11",
-        "question": "Which if the following is not typically used to detect change in a sensor? (See image)",
+        "question": "Which if the following is not typically used to detect change in a sensor?",
         "options": [
           {
             "text": "Material of conductive plates",
@@ -3369,7 +3439,8 @@
         ],
         "explanation": "",
         "multiSelect": false,
-        "type": "multiple_choice"
+        "type": "multiple_choice",
+        "image": "capacitor_diagram.png"
       },
       {
         "id": "Sensor Fusion_12",
@@ -3398,7 +3469,7 @@
       },
       {
         "id": "Sensor Fusion_13",
-        "question": "The following sensor uses capacitance to detect water level. Which change in factor are we trying to detect? (See image)",
+        "question": "The following sensor uses capacitance to detect water level. Which change in factor are we trying to detect?",
         "options": [
           {
             "text": "Material of conductive plates",
@@ -3419,7 +3490,8 @@
         ],
         "explanation": "",
         "multiSelect": false,
-        "type": "multiple_choice"
+        "type": "multiple_choice",
+        "image": "water_level_sensor.png"
       }
     ]
   }

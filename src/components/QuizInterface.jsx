@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { CheckCircle2, Circle, Clock } from 'lucide-react';
+import { CheckCircle2, Circle, Clock, ChevronUp, ChevronDown } from 'lucide-react';
 
 const QuizInterface = ({ topic, onSubmit, onBack, setMascotMood, setMascotMessage }) => {
     // Shuffle questions if All Topics mode
@@ -13,6 +13,9 @@ const QuizInterface = ({ topic, onSubmit, onBack, setMascotMood, setMascotMessag
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [answers, setAnswers] = useState({}); // { questionId: [selectedIndices] }
     const [textAnswers, setTextAnswers] = useState({}); // { questionId: ["answer1", "answer2"] }
+    const [rankingAnswers, setRankingAnswers] = useState({}); // { questionId: [orderedOptionIndices] }
+    const [matchingAnswers, setMatchingAnswers] = useState({}); // { questionId: { symbol: descriptionIndex } }
+    const [selectedSymbol, setSelectedSymbol] = useState(null); // Currently selected symbol for matching
     const [startTime] = useState(Date.now());
     const [elapsedTime, setElapsedTime] = useState(0);
     const [isAnswered, setIsAnswered] = useState(false);
@@ -64,10 +67,144 @@ const QuizInterface = ({ topic, onSubmit, onBack, setMascotMood, setMascotMessag
         setTextAnswers({ ...textAnswers, [questionId]: newTextAnswers });
     };
 
+    // Initialize ranking order if not set
+    useEffect(() => {
+        if (currentQuestion.type === 'ranking' && !rankingAnswers[currentQuestion.id]) {
+            // Initialize with shuffled order
+            const shuffledIndices = currentQuestion.options.map((_, idx) => idx)
+                .sort(() => Math.random() - 0.5);
+            setRankingAnswers({ ...rankingAnswers, [currentQuestion.id]: shuffledIndices });
+        }
+    }, [currentQuestion.id, currentQuestion.type, currentQuestion.options]);
+
+    // Initialize matching answers and shuffle descriptions if not set
+    const [shuffledDescriptions, setShuffledDescriptions] = useState({});
+    
+    useEffect(() => {
+        if (currentQuestion.type === 'matching' && !matchingAnswers[currentQuestion.id]) {
+            // Initialize with empty matches
+            setMatchingAnswers({ ...matchingAnswers, [currentQuestion.id]: {} });
+            // Shuffle descriptions for this question
+            const shuffled = currentQuestion.options
+                .map((opt, idx) => idx)
+                .sort(() => Math.random() - 0.5);
+            setShuffledDescriptions({ ...shuffledDescriptions, [currentQuestion.id]: shuffled });
+        }
+    }, [currentQuestion.id, currentQuestion.type]);
+
+    const handleSymbolClick = (symbol) => {
+        if (isAnswered) return;
+        // Toggle selection
+        setSelectedSymbol(selectedSymbol === symbol ? null : symbol);
+    };
+
+    const handleDescriptionClick = (descriptionIndex) => {
+        if (isAnswered || !selectedSymbol) return;
+        const questionId = currentQuestion.id;
+        const currentMatches = matchingAnswers[questionId] || {};
+        const newMatches = { ...currentMatches };
+        
+        // If this description is already matched to another symbol, remove that match
+        Object.keys(newMatches).forEach(key => {
+            if (newMatches[key] === descriptionIndex) {
+                delete newMatches[key];
+            }
+        });
+        
+        // If clicking the same symbol-description pair, remove the match
+        if (newMatches[selectedSymbol] === descriptionIndex) {
+            delete newMatches[selectedSymbol];
+        } else {
+            newMatches[selectedSymbol] = descriptionIndex;
+        }
+        
+        setMatchingAnswers({ ...matchingAnswers, [questionId]: newMatches });
+        setSelectedSymbol(null); // Clear selection after matching
+    };
+
+    const handleRankingMove = (direction, index) => {
+        if (isAnswered) return;
+        const questionId = currentQuestion.id;
+        const currentOrder = rankingAnswers[questionId] || [];
+        const newOrder = [...currentOrder];
+        
+        if (direction === 'up' && index > 0) {
+            [newOrder[index - 1], newOrder[index]] = [newOrder[index], newOrder[index - 1]];
+        } else if (direction === 'down' && index < newOrder.length - 1) {
+            [newOrder[index], newOrder[index + 1]] = [newOrder[index + 1], newOrder[index]];
+        }
+        
+        setRankingAnswers({ ...rankingAnswers, [questionId]: newOrder });
+    };
+
     const checkAnswer = () => {
         const questionId = currentQuestion.id;
 
-        if (currentQuestion.type === 'fill_in_the_blank') {
+        if (currentQuestion.type === 'matching') {
+            const userMatches = matchingAnswers[questionId] || {};
+            const totalPairs = currentQuestion.options.length;
+            
+            if (Object.keys(userMatches).length !== totalPairs) {
+                setMascotMood('sad');
+                setMascotMessage('Please match all items!');
+                return;
+            }
+
+            setIsAnswered(true);
+
+            // Check if all matches are correct
+            // Each option has a symbol and description - the correct match is symbol -> its own description index
+            const isCorrect = currentQuestion.options.every((opt, idx) => {
+                const userMatch = userMatches[opt.symbol];
+                return userMatch === idx; // Description index should match option index
+            });
+
+            if (isCorrect) {
+                setMascotMood('excited');
+                setMascotMessage('Perfect! All matches are correct!');
+            } else {
+                setMascotMood('sad');
+                setMascotMessage('Not all matches are correct. Check your answers.');
+            }
+
+        } else if (currentQuestion.type === 'ranking') {
+            const userOrder = rankingAnswers[questionId] || [];
+            
+            if (userOrder.length !== currentQuestion.options.length) {
+                setMascotMood('sad');
+                setMascotMessage('Please rank all items!');
+                return;
+            }
+
+            setIsAnswered(true);
+
+            // Check if the user's order matches the correct rank order
+            // Create a map of option index to its correct rank
+            const correctRankMap = {};
+            currentQuestion.options.forEach((opt, idx) => {
+                if (opt.rank !== undefined) {
+                    correctRankMap[opt.rank] = idx;
+                }
+            });
+
+            // Get the correct order (sorted by rank)
+            const correctOrder = Object.keys(correctRankMap)
+                .sort((a, b) => parseInt(a) - parseInt(b))
+                .map(rank => correctRankMap[rank]);
+
+            // Check if user order matches correct order
+            const isCorrect = userOrder.length === correctOrder.length &&
+                userOrder.every((idx, pos) => idx === correctOrder[pos]);
+
+            if (isCorrect) {
+                setMascotMood('excited');
+                setMascotMessage('Perfect! You got the order right!');
+            } else {
+                setMascotMood('sad');
+                setMascotMessage('Not quite right. Check the correct order.');
+            }
+
+        } else if (currentQuestion.type === 'fill_in_the_blank') {
             const userInputs = textAnswers[questionId] || [];
             // Check if all blanks are filled (assuming number of blanks equals number of options/answers)
             if (userInputs.length < currentQuestion.options.length || userInputs.some(val => !val || val.trim() === '')) {
@@ -145,7 +282,28 @@ const QuizInterface = ({ topic, onSubmit, onBack, setMascotMood, setMascotMessag
     const handleSubmit = () => {
         let score = 0;
         shuffledQuestions.forEach(q => {
-            if (q.type === 'fill_in_the_blank') {
+            if (q.type === 'matching') {
+                const userMatches = matchingAnswers[q.id] || {};
+                const isCorrect = q.options.every((opt, idx) => {
+                    const userMatch = userMatches[opt.symbol];
+                    return userMatch === idx;
+                });
+                if (isCorrect) score++;
+            } else if (q.type === 'ranking') {
+                const userOrder = rankingAnswers[q.id] || [];
+                const correctRankMap = {};
+                q.options.forEach((opt, idx) => {
+                    if (opt.rank !== undefined) {
+                        correctRankMap[opt.rank] = idx;
+                    }
+                });
+                const correctOrder = Object.keys(correctRankMap)
+                    .sort((a, b) => parseInt(a) - parseInt(b))
+                    .map(rank => correctRankMap[rank]);
+                const isCorrect = userOrder.length === correctOrder.length &&
+                    userOrder.every((idx, pos) => idx === correctOrder[pos]);
+                if (isCorrect) score++;
+            } else if (q.type === 'fill_in_the_blank') {
                 const userInputs = textAnswers[q.id] || [];
                 const isCorrect = q.options.every((opt, idx) => {
                     const userVal = (userInputs[idx] || '').trim().toLowerCase();
@@ -166,7 +324,7 @@ const QuizInterface = ({ topic, onSubmit, onBack, setMascotMood, setMascotMessag
             }
         });
 
-        onSubmit(answers, score, elapsedTime);
+        onSubmit(answers, score, elapsedTime, rankingAnswers, textAnswers, matchingAnswers);
     };
 
 
@@ -210,9 +368,168 @@ const QuizInterface = ({ topic, onSubmit, onBack, setMascotMood, setMascotMessag
                     exit={{ opacity: 0, x: -20 }}
                     transition={{ duration: 0.2 }}
                 >
-                    <h3 className="text-xl font-semibold mb-2">{currentQuestion.question}</h3>
+                    <h3 className="text-xl font-semibold mb-2 whitespace-pre-line">{currentQuestion.question}</h3>
 
-                    {currentQuestion.type === 'fill_in_the_blank' ? (
+                    {currentQuestion.image && (
+                        <div className="mb-4 flex justify-center">
+                            <img 
+                                src={`${import.meta.env.BASE_URL || '/'}images/${currentQuestion.image}`}
+                                alt="Question diagram"
+                                className="max-w-full h-auto rounded-lg border border-slate-600 shadow-lg"
+                                style={{ maxHeight: '400px' }}
+                                onError={(e) => {
+                                    console.error('Image failed to load:', e.target.src);
+                                    // Try fallback path
+                                    const fallbackSrc = `/images/${currentQuestion.image}`;
+                                    if (e.target.src !== fallbackSrc) {
+                                        e.target.src = fallbackSrc;
+                                    } else {
+                                        e.target.style.display = 'none';
+                                    }
+                                }}
+                            />
+                        </div>
+                    )}
+
+                    {currentQuestion.type === 'matching' ? (
+                        <div className="space-y-4 mt-4">
+                            <p className="text-sm text-slate-400 mb-4">Match each symbol with its description:</p>
+                            <div className="grid grid-cols-2 gap-4">
+                                {/* Symbols column */}
+                                <div className="space-y-2">
+                                    <h4 className="text-sm font-semibold text-slate-300 mb-2">Symbols</h4>
+                                    {currentQuestion.options.map((opt, idx) => {
+                                        const userMatch = (matchingAnswers[currentQuestion.id] || {})[opt.symbol];
+                                        const isMatched = userMatch !== undefined;
+                                        const isSelected = selectedSymbol === opt.symbol;
+                                        const isCorrect = isAnswered && userMatch === idx;
+                                        const isWrong = isAnswered && isMatched && userMatch !== idx;
+                                        
+                                        return (
+                                            <div
+                                                key={idx}
+                                                className={`p-3 rounded-lg border text-center font-mono text-lg transition-all
+                                                    ${isAnswered
+                                                        ? (isCorrect 
+                                                            ? 'bg-green-500/20 border-green-500 text-green-200'
+                                                            : isWrong
+                                                            ? 'bg-red-500/20 border-red-500 text-red-200'
+                                                            : 'bg-slate-700/50 border-slate-600')
+                                                        : (isSelected
+                                                            ? 'bg-secondary/30 border-secondary ring-2 ring-secondary'
+                                                            : isMatched
+                                                            ? 'bg-primary/20 border-primary text-white'
+                                                            : 'bg-slate-700/50 border-slate-600 hover:bg-slate-700 cursor-pointer')
+                                                    }
+                                                `}
+                                                onClick={() => handleSymbolClick(opt.symbol)}
+                                            >
+                                                {opt.symbol}
+                                            </div>
+                                        );
+                                    })}
+                                </div>
+                                
+                                {/* Descriptions column */}
+                                <div className="space-y-2">
+                                    <h4 className="text-sm font-semibold text-slate-300 mb-2">Descriptions</h4>
+                                    {(shuffledDescriptions[currentQuestion.id] || currentQuestion.options.map((_, idx) => idx))
+                                        .map((originalIdx) => {
+                                            const opt = currentQuestion.options[originalIdx];
+                                            const userMatches = matchingAnswers[currentQuestion.id] || {};
+                                            const matchedSymbol = Object.keys(userMatches).find(
+                                                sym => userMatches[sym] === originalIdx
+                                            );
+                                            const isMatched = matchedSymbol !== undefined;
+                                            const isCorrect = isAnswered && matchedSymbol === opt.symbol;
+                                            const isWrong = isAnswered && isMatched && matchedSymbol !== opt.symbol;
+                                            
+                                            return (
+                                                <div
+                                                    key={originalIdx}
+                                                    className={`p-3 rounded-lg border text-center
+                                                        ${isAnswered
+                                                            ? (isCorrect 
+                                                                ? 'bg-green-500/20 border-green-500 text-green-200'
+                                                                : isWrong
+                                                                ? 'bg-red-500/20 border-red-500 text-red-200'
+                                                                : 'bg-slate-700/50 border-slate-600')
+                                                            : (isMatched
+                                                                ? 'bg-primary/20 border-primary text-white'
+                                                                : 'bg-slate-700/50 border-slate-600 hover:bg-slate-700 cursor-pointer')
+                                                        }
+                                                    `}
+                                                    onClick={() => handleDescriptionClick(originalIdx)}
+                                                >
+                                                    {opt.description}
+                                                    {isAnswered && !isCorrect && matchedSymbol && (
+                                                        <div className="text-xs mt-1 text-red-400">
+                                                            Should match: {opt.symbol}
+                                                        </div>
+                                                    )}
+                                                </div>
+                                            );
+                                        })}
+                                </div>
+                            </div>
+                        </div>
+                    ) : currentQuestion.type === 'ranking' ? (
+                        <div className="space-y-3 mt-4">
+                            <p className="text-sm text-slate-400 mb-4">Drag items to reorder them from least intrusive (#1) to most intrusive (#4):</p>
+                            {(rankingAnswers[currentQuestion.id] || []).map((optionIdx, position) => {
+                                const option = currentQuestion.options[optionIdx];
+                                const correctRank = option.rank;
+                                const userRank = position + 1;
+                                const isCorrect = correctRank === userRank;
+
+                                return (
+                                    <div
+                                        key={optionIdx}
+                                        className={`flex items-center gap-3 p-4 rounded-lg border transition-all
+                                            ${isAnswered
+                                                ? (isCorrect 
+                                                    ? 'bg-green-500/10 border-green-500/50 text-green-200'
+                                                    : 'bg-red-500/10 border-red-500/50 text-red-200')
+                                                : 'bg-slate-700/50 border-slate-600 hover:bg-slate-700'
+                                            }
+                                        `}
+                                    >
+                                        <div className="flex flex-col gap-1">
+                                            <button
+                                                onClick={() => handleRankingMove('up', position)}
+                                                disabled={isAnswered || position === 0}
+                                                className="p-1 rounded hover:bg-slate-600 disabled:opacity-30 disabled:cursor-not-allowed"
+                                            >
+                                                <ChevronUp size={16} />
+                                            </button>
+                                            <button
+                                                onClick={() => handleRankingMove('down', position)}
+                                                disabled={isAnswered || position === (rankingAnswers[currentQuestion.id]?.length || 0) - 1}
+                                                className="p-1 rounded hover:bg-slate-600 disabled:opacity-30 disabled:cursor-not-allowed"
+                                            >
+                                                <ChevronDown size={16} />
+                                            </button>
+                                        </div>
+                                        <div className="flex-1 flex items-center gap-3">
+                                            <span className="text-2xl font-bold text-slate-400 w-8 text-center">
+                                                {position + 1}
+                                            </span>
+                                            <span className="flex-1">{option.text}</span>
+                                            {isAnswered && (
+                                                <div className="text-sm">
+                                                    {isCorrect ? (
+                                                        <span className="text-green-400 font-bold">✓ Correct</span>
+                                                    ) : (
+                                                        <span className="text-red-400">Should be #{correctRank}</span>
+                                                    )}
+                                                </div>
+                                            )}
+                                        </div>
+                                    </div>
+                                );
+                            })}
+                        </div>
+                    ) : currentQuestion.type === 'fill_in_the_blank' ? (
                         <div className="space-y-4 mt-4">
                             <p className="text-sm text-slate-400 mb-2">Fill in the blanks:</p>
                             {currentQuestion.options.map((option, idx) => {

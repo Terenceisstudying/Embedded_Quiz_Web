@@ -635,6 +635,17 @@ Units A and B take turns to transmit 1
 Units A and B transmit at the same time
 
 Unit A sends half of the data, then unit B sends the other half
+
+Only Unit A can transmit, Unit B can only receive
+
+
+
+**A 7-bit ascii data is transmitted with 1 start bit, 1 stop bit and 1 parity bit at a baud rate of 9600. How fast is the 7-bit ascii data being transmitted?**
+
+0.115 ms
+
+1.042 ms 1
+
 0.104 ms
 
 1.146 ms

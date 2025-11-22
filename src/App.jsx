@@ -9,6 +9,9 @@ function App() {
   const [currentScreen, setCurrentScreen] = useState('topics'); // topics, quiz, results
   const [selectedTopic, setSelectedTopic] = useState(null);
   const [userAnswers, setUserAnswers] = useState({}); // { questionId: [selectedOptionIndices] }
+  const [rankingAnswers, setRankingAnswers] = useState({}); // { questionId: [orderedOptionIndices] }
+  const [textAnswers, setTextAnswers] = useState({}); // { questionId: ["answer1", "answer2"] }
+  const [matchingAnswers, setMatchingAnswers] = useState({}); // { questionId: { symbol: descriptionIndex } }
   const [score, setScore] = useState(0);
   const [timeTaken, setTimeTaken] = useState(0);
   const [mascotMood, setMascotMood] = useState('neutral');
@@ -17,6 +20,8 @@ function App() {
   const handleTopicSelect = (topic) => {
     setSelectedTopic(topic);
     setUserAnswers({});
+    setRankingAnswers({});
+    setTextAnswers({});
     setScore(0);
     setTimeTaken(0);
     setCurrentScreen('quiz');
@@ -24,8 +29,11 @@ function App() {
     setMascotMessage('Good luck! You can do it!');
   };
 
-  const handleQuizSubmit = (answers, calculatedScore, elapsedTime) => {
+  const handleQuizSubmit = (answers, calculatedScore, elapsedTime, rankingAnswers = {}, textAnswers = {}, matchingAnswers = {}) => {
     setUserAnswers(answers);
+    setRankingAnswers(rankingAnswers);
+    setTextAnswers(textAnswers);
+    setMatchingAnswers(matchingAnswers);
     setScore(calculatedScore);
     setTimeTaken(elapsedTime);
     setCurrentScreen('results');
@@ -47,6 +55,8 @@ function App() {
     setCurrentScreen('topics');
     setSelectedTopic(null);
     setUserAnswers({});
+    setRankingAnswers({});
+    setTextAnswers({});
     setScore(0);
     setMascotMood('neutral');
     setMascotMessage('Ready for another round?');
@@ -105,6 +115,9 @@ function App() {
             <ResultScreen
               topic={selectedTopic}
               answers={userAnswers}
+              rankingAnswers={rankingAnswers}
+              textAnswers={textAnswers}
+              matchingAnswers={matchingAnswers}
               score={score}
               timeTaken={timeTaken}
               onRestart={handleRestart}

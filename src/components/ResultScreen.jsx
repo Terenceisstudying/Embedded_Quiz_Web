@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Check, X, AlertCircle, Clock } from 'lucide-react';
 
-const ResultScreen = ({ topic, answers, score, timeTaken, onRestart }) => {
+const ResultScreen = ({ topic, answers, rankingAnswers = {}, textAnswers = {}, matchingAnswers = {}, score, timeTaken, onRestart }) => {
     const totalQuestions = topic.questions.length;
     const percentage = Math.round((score / totalQuestions) * 100);
 
@@ -44,13 +44,44 @@ const ResultScreen = ({ topic, answers, score, timeTaken, onRestart }) => {
                 <h3 className="text-xl font-semibold border-b border-slate-700 pb-2">Review Answers</h3>
 
                 {topic.questions.map((q, qIdx) => {
-                    const userSelected = answers[q.id] || [];
-                    const correctIndices = q.options
-                        .map((opt, idx) => opt.isCorrect ? idx : -1)
-                        .filter(idx => idx !== -1);
-
-                    const isCorrect = userSelected.length === correctIndices.length &&
-                        userSelected.every(val => correctIndices.includes(val));
+                    let isCorrect = false;
+                    let userSelected = [];
+                    
+                    if (q.type === 'matching') {
+                        const userMatches = matchingAnswers[q.id] || {};
+                        isCorrect = q.options.every((opt, idx) => {
+                            const userMatch = userMatches[opt.symbol];
+                            return userMatch === idx;
+                        });
+                    } else if (q.type === 'ranking') {
+                        const userOrder = rankingAnswers[q.id] || [];
+                        const correctRankMap = {};
+                        q.options.forEach((opt, idx) => {
+                            if (opt.rank !== undefined) {
+                                correctRankMap[opt.rank] = idx;
+                            }
+                        });
+                        const correctOrder = Object.keys(correctRankMap)
+                            .sort((a, b) => parseInt(a) - parseInt(b))
+                            .map(rank => correctRankMap[rank]);
+                        isCorrect = userOrder.length === correctOrder.length &&
+                            userOrder.every((idx, pos) => idx === correctOrder[pos]);
+                        userSelected = userOrder; // For display purposes
+                    } else if (q.type === 'fill_in_the_blank') {
+                        const userInputs = textAnswers[q.id] || [];
+                        isCorrect = q.options.every((opt, idx) => {
+                            const userVal = (userInputs[idx] || '').trim().toLowerCase();
+                            const correctVal = opt.text.trim().toLowerCase();
+                            return userVal === correctVal;
+                        });
+                    } else {
+                        userSelected = answers[q.id] || [];
+                        const correctIndices = q.options
+                            .map((opt, idx) => opt.isCorrect ? idx : -1)
+                            .filter(idx => idx !== -1);
+                        isCorrect = userSelected.length === correctIndices.length &&
+                            userSelected.every(val => correctIndices.includes(val));
+                    }
 
                     return (
                         <div key={q.id} className={`p-6 rounded-xl border ${isCorrect ? 'border-green-500/30 bg-green-500/5' : 'border-red-500/30 bg-red-500/5'}`}>
@@ -62,45 +93,133 @@ const ResultScreen = ({ topic, answers, score, timeTaken, onRestart }) => {
                                         <X className="text-red-400 w-6 h-6" />
                                     )}
                                 </div>
-                                <div>
-                                    <h4 className="text-lg font-medium text-slate-200">{q.question}</h4>
+                                <div className="flex-1">
+                                    <h4 className="text-lg font-medium text-slate-200 whitespace-pre-line">{q.question}</h4>
                                 </div>
                             </div>
 
-                            <div className="space-y-2 ml-9">
-                                {q.options.map((opt, optIdx) => {
-                                    const isSelected = userSelected.includes(optIdx);
-                                    const isActuallyCorrect = opt.isCorrect;
+                            {q.image && (
+                                <div className="mb-4 ml-9 flex justify-center">
+                                    <img 
+                                        src={`${import.meta.env.BASE_URL || '/'}images/${q.image}`}
+                                        alt="Question diagram"
+                                        className="max-w-full h-auto rounded-lg border border-slate-600 shadow-lg"
+                                        style={{ maxHeight: '300px' }}
+                                        onError={(e) => {
+                                            console.error('Image failed to load:', e.target.src);
+                                            // Try fallback path
+                                            const fallbackSrc = `/images/${q.image}`;
+                                            if (e.target.src !== fallbackSrc) {
+                                                e.target.src = fallbackSrc;
+                                            } else {
+                                                e.target.style.display = 'none';
+                                            }
+                                        }}
+                                    />
+                                </div>
+                            )}
 
-                                    let styleClass = "text-slate-400 border-slate-700";
-                                    let icon = null;
+                            {q.type === 'ranking' ? (
+                                <div className="space-y-2 ml-9">
+                                    <p className="text-sm text-slate-400 mb-3">Your ranking vs Correct ranking:</p>
+                                    {(rankingAnswers[q.id] || []).map((optionIdx, position) => {
+                                        const option = q.options[optionIdx];
+                                        const correctRank = option.rank;
+                                        const userRank = position + 1;
+                                        const isRankCorrect = correctRank === userRank;
+                                        
+                                        // Find correct position for this option
+                                        const correctRankMap = {};
+                                        q.options.forEach((opt, idx) => {
+                                            if (opt.rank !== undefined) {
+                                                correctRankMap[opt.rank] = idx;
+                                            }
+                                        });
+                                        const correctOrder = Object.keys(correctRankMap)
+                                            .sort((a, b) => parseInt(a) - parseInt(b))
+                                            .map(rank => correctRankMap[rank]);
+                                        const correctPosition = correctOrder.indexOf(optionIdx);
 
-                                    if (isActuallyCorrect) {
-                                        styleClass = "text-green-300 border-green-500/50 bg-green-500/10 font-medium";
-                                        icon = <Check size={16} className="ml-auto text-green-400" />;
-                                    } else if (isSelected && !isActuallyCorrect) {
-                                        styleClass = "text-red-300 border-red-500/50 bg-red-500/10";
-                                        icon = <X size={16} className="ml-auto text-red-400" />;
-                                    } else if (isSelected && isActuallyCorrect) {
-                                        // Handled by first if, but strictly speaking if we want to show user selection specifically
-                                        // The first if covers "Correct Answer", we might want to highlight if user picked it too.
-                                        // But usually showing the correct answer is enough.
-                                        // Let's refine:
-                                    }
+                                        return (
+                                            <div
+                                                key={optionIdx}
+                                                className={`p-3 rounded border text-sm flex items-center gap-3
+                                                    ${isRankCorrect 
+                                                        ? 'bg-green-500/10 border-green-500/50 text-green-200'
+                                                        : 'bg-red-500/10 border-red-500/50 text-red-200'
+                                                    }
+                                                `}
+                                            >
+                                                <span className="font-bold w-12">#{userRank}</span>
+                                                <span className="flex-1">{option.text}</span>
+                                                {isRankCorrect ? (
+                                                    <Check size={16} className="text-green-400" />
+                                                ) : (
+                                                    <span className="text-xs">Should be #{correctRank}</span>
+                                                )}
+                                            </div>
+                                        );
+                                    })}
+                                </div>
+                            ) : q.type === 'fill_in_the_blank' ? (
+                                <div className="space-y-2 ml-9">
+                                    {q.options.map((opt, idx) => {
+                                        const userVal = (textAnswers[q.id] || [])[idx] || '';
+                                        const isCorrect = userVal.trim().toLowerCase() === opt.text.trim().toLowerCase();
+                                        
+                                        return (
+                                            <div
+                                                key={idx}
+                                                className={`p-3 rounded border text-sm flex items-center gap-3
+                                                    ${isCorrect 
+                                                        ? 'bg-green-500/10 border-green-500/50 text-green-200'
+                                                        : 'bg-red-500/10 border-red-500/50 text-red-200'
+                                                    }
+                                                `}
+                                            >
+                                                <span className="font-mono text-xs w-8">{idx + 1}.</span>
+                                                <span className="flex-1">Your answer: <strong>{userVal || '(empty)'}</strong></span>
+                                                <span className="text-xs">Expected: {opt.text}</span>
+                                                {isCorrect ? (
+                                                    <Check size={16} className="text-green-400" />
+                                                ) : (
+                                                    <X size={16} className="text-red-400" />
+                                                )}
+                                            </div>
+                                        );
+                                    })}
+                                </div>
+                            ) : (
+                                <div className="space-y-2 ml-9">
+                                    {q.options.map((opt, optIdx) => {
+                                        const isSelected = userSelected.includes(optIdx);
+                                        const isActuallyCorrect = opt.isCorrect;
 
-                                    return (
-                                        <div
-                                            key={optIdx}
-                                            className={`p-3 rounded border text-sm flex items-center ${styleClass}`}
-                                        >
-                                            <span className="flex-1">{opt.text}</span>
-                                            {icon}
-                                            {isSelected && isActuallyCorrect && <span className="text-xs bg-green-500 text-black px-2 py-0.5 rounded ml-2">You Selected</span>}
-                                            {isSelected && !isActuallyCorrect && <span className="text-xs bg-red-500 text-white px-2 py-0.5 rounded ml-2">You Selected</span>}
-                                        </div>
-                                    );
-                                })}
-                            </div>
+                                        let styleClass = "text-slate-400 border-slate-700";
+                                        let icon = null;
+
+                                        if (isActuallyCorrect) {
+                                            styleClass = "text-green-300 border-green-500/50 bg-green-500/10 font-medium";
+                                            icon = <Check size={16} className="ml-auto text-green-400" />;
+                                        } else if (isSelected && !isActuallyCorrect) {
+                                            styleClass = "text-red-300 border-red-500/50 bg-red-500/10";
+                                            icon = <X size={16} className="ml-auto text-red-400" />;
+                                        }
+
+                                        return (
+                                            <div
+                                                key={optIdx}
+                                                className={`p-3 rounded border text-sm flex items-center ${styleClass}`}
+                                            >
+                                                <span className="flex-1">{opt.text}</span>
+                                                {icon}
+                                                {isSelected && isActuallyCorrect && <span className="text-xs bg-green-500 text-black px-2 py-0.5 rounded ml-2">You Selected</span>}
+                                                {isSelected && !isActuallyCorrect && <span className="text-xs bg-red-500 text-white px-2 py-0.5 rounded ml-2">You Selected</span>}
+                                            </div>
+                                        );
+                                    })}
+                                </div>
+                            )}
 
                             {q.explanation && (
                                 <div className="mt-4 ml-9 p-4 bg-slate-800 rounded-lg text-sm text-slate-300 flex gap-3">
