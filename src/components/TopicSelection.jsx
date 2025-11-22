@@ -18,6 +18,33 @@ const TopicSelection = ({ topics, onSelect }) => {
         <div className="space-y-6">
             <h2 className="text-2xl font-semibold text-center mb-6">Choose a Topic</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {/* All Topics Option */}
+                <motion.button
+                    whileHover={{ scale: 1.03 }}
+                    whileTap={{ scale: 0.98 }}
+                    onClick={() => onSelect({
+                        topic: "🌟 All Topics",
+                        questions: topics.flatMap(t => t.questions),
+                        isAllTopics: true
+                    })}
+                    className="flex flex-col items-center justify-center p-6 rounded-lg border-4 transition-all group md:col-span-2 lg:col-span-3"
+                    style={{
+                        background: 'linear-gradient(135deg, #FF6B9D 0%, #FFD93D 25%, #6BCB77 50%, #4D96FF 75%, #FF6B9D 100%)',
+                        backgroundSize: '200% 200%',
+                        animation: 'gradient 3s ease infinite',
+                        borderImage: 'linear-gradient(45deg, #FF6B9D, #FFD93D, #6BCB77, #4D96FF) 1',
+                    }}
+                >
+                    <div className="mb-4 text-white text-6xl">🎯</div>
+                    <span className="text-2xl font-bold text-white text-center drop-shadow-lg">
+                        All Topics - Ultimate Challenge
+                    </span>
+                    <span className="text-lg text-white mt-2 font-semibold">
+                        {topics.reduce((sum, t) => sum + t.questions.length, 0)} Questions • Randomized Order
+                    </span>
+                </motion.button>
+
+                {/* Individual Topics */}
                 {topics.map((topic, index) => (
                     <motion.button
                         key={index}

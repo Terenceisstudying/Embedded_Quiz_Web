@@ -1,10 +1,16 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Check, X, AlertCircle } from 'lucide-react';
+import { Check, X, AlertCircle, Clock } from 'lucide-react';
 
-const ResultScreen = ({ topic, answers, score, onRestart }) => {
+const ResultScreen = ({ topic, answers, score, timeTaken, onRestart }) => {
     const totalQuestions = topic.questions.length;
     const percentage = Math.round((score / totalQuestions) * 100);
+
+    const formatTime = (seconds) => {
+        const mins = Math.floor(seconds / 60);
+        const secs = seconds % 60;
+        return `${mins}m ${secs}s`;
+    };
 
     const getGradeColor = (p) => {
         if (p >= 80) return 'text-green-400';
@@ -22,6 +28,10 @@ const ResultScreen = ({ topic, answers, score, onRestart }) => {
                 <p className="text-slate-400">
                     You scored {score} out of {totalQuestions}
                 </p>
+                <div className="flex items-center justify-center gap-2 mt-3 text-secondary">
+                    <Clock size={20} />
+                    <span className="text-lg font-semibold">Completed in {formatTime(timeTaken)}</span>
+                </div>
                 <button
                     onClick={onRestart}
                     className="mt-6 px-8 py-3 bg-secondary hover:bg-purple-600 text-white rounded-full font-bold transition-all shadow-lg shadow-secondary/25"

@@ -1,13 +1,35 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { CheckCircle2, Circle } from 'lucide-react';
+import { CheckCircle2, Circle, Clock } from 'lucide-react';
 
 const QuizInterface = ({ topic, onSubmit, onBack }) => {
+    // Shuffle questions if All Topics mode
+    const shuffledQuestions = topic.isAllTopics
+        ? [...topic.questions].sort(() => Math.random() - 0.5)
+        : topic.questions;
+
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [answers, setAnswers] = useState({}); // { questionId: [selectedIndices] }
+    const [startTime] = useState(Date.now());
+    const [elapsedTime, setElapsedTime] = useState(0);
 
-    const currentQuestion = topic.questions[currentQuestionIndex];
-    const totalQuestions = topic.questions.length;
+    // Timer effect
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setElapsedTime(Math.floor((Date.now() - startTime) / 1000));
+        }, 1000);
+        return () => clearInterval(interval);
+    }, [startTime]);
+
+    // Format time as MM:SS
+    const formatTime = (seconds) => {
+        const mins = Math.floor(seconds / 60);
+        const secs = seconds % 60;
+        return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+    };
+
+    const currentQuestion = shuffledQuestions[currentQuestionIndex];
+    const totalQuestions = shuffledQuestions.length;
 
     const handleOptionToggle = (optionIndex) => {
         const questionId = currentQuestion.id;
@@ -45,7 +67,7 @@ const QuizInterface = ({ topic, onSubmit, onBack }) => {
     const handleSubmit = () => {
         // Calculate score
         let score = 0;
-        topic.questions.forEach(q => {
+        shuffledQuestions.forEach(q => {
             const userSelected = answers[q.id] || [];
             const correctIndices = q.options
                 .map((opt, idx) => opt.isCorrect ? idx : -1)
@@ -60,7 +82,7 @@ const QuizInterface = ({ topic, onSubmit, onBack }) => {
             }
         });
 
-        onSubmit(answers, score);
+        onSubmit(answers, score, elapsedTime);
     };
 
     const progress = ((currentQuestionIndex + 1) / totalQuestions) * 100;
@@ -72,8 +94,16 @@ const QuizInterface = ({ topic, onSubmit, onBack }) => {
                 <button onClick={onBack} className="text-sm text-slate-400 hover:text-white">
                     &larr; Back to Topics
                 </button>
-                <div className="text-sm font-medium text-slate-300">
-                    Question {currentQuestionIndex + 1} / {totalQuestions}
+                <div className="flex items-center gap-4">
+                    <div className="flex items-center gap-2 px-3 py-1 bg-slate-700 rounded-lg border border-slate-600">
+                        <Clock size={16} className="text-secondary" />
+                        <span className="text-sm font-mono font-bold text-secondary">
+                            {formatTime(elapsedTime)}
+                        </span>
+                    </div>
+                    <div className="text-sm font-medium text-slate-300">
+                        Question {currentQuestionIndex + 1} / {totalQuestions}
+                    </div>
                 </div>
             </div>
 
@@ -132,8 +162,8 @@ const QuizInterface = ({ topic, onSubmit, onBack }) => {
                     onClick={handlePrevious}
                     disabled={currentQuestionIndex === 0}
                     className={`px-6 py-2 rounded-lg font-medium ${currentQuestionIndex === 0
-                            ? 'opacity-50 cursor-not-allowed text-slate-500'
-                            : 'text-white hover:bg-slate-700'
+                        ? 'opacity-50 cursor-not-allowed text-slate-500'
+                        : 'text-white hover:bg-slate-700'
                         }`}
                 >
                     Previous
