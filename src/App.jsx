@@ -93,12 +93,12 @@ function App() {
             </ol>
           </nav>
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-3 sm:mb-4 relative text-white"
-              style={{
-                fontFamily: "'Bangers', cursive",
-                textShadow: '2px 2px 0px #FF6B9D, 4px 4px 0px #FFD93D',
-                letterSpacing: '0.02em',
-                lineHeight: '1.2'
-              }}>
+            style={{
+              fontFamily: "'Bangers', cursive",
+              textShadow: '2px 2px 0px #FF6B9D, 4px 4px 0px #FFD93D',
+              letterSpacing: '0.02em',
+              lineHeight: '1.2'
+            }}>
             Embedded Systems Quiz
           </h1>
           <p className="text-base sm:text-lg md:text-xl mt-2 sm:mt-3 font-medium text-slate-300">
@@ -137,18 +137,17 @@ function App() {
           )}
         </main>
       </div>
-      
+
       {/* Mascot Version Toggle - Accessible and mobile-friendly */}
       <div className="fixed top-4 right-4 z-50 flex flex-col sm:flex-row gap-2" role="group" aria-label="Mascot display options">
         <button
           onClick={() => setMascotVersion('2d')}
           aria-pressed={mascotVersion === '2d'}
           aria-label="Show 2D mascot"
-          className={`min-w-[44px] min-h-[44px] px-4 py-2 rounded-lg text-sm font-semibold transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary ${
-            mascotVersion === '2d' 
-              ? 'bg-red-500 text-white shadow-lg' 
+          className={`min-w-[44px] min-h-[44px] px-4 py-2 rounded-lg text-sm font-semibold transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary ${mascotVersion === '2d'
+              ? 'bg-red-500 text-white shadow-lg'
               : 'bg-white/90 text-slate-700 hover:bg-white'
-          }`}
+            }`}
         >
           2D
         </button>
@@ -156,11 +155,10 @@ function App() {
           onClick={() => setMascotVersion('3d')}
           aria-pressed={mascotVersion === '3d'}
           aria-label="Show 3D mascot"
-          className={`min-w-[44px] min-h-[44px] px-4 py-2 rounded-lg text-sm font-semibold transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary ${
-            mascotVersion === '3d' 
-              ? 'bg-red-500 text-white shadow-lg' 
+          className={`min-w-[44px] min-h-[44px] px-4 py-2 rounded-lg text-sm font-semibold transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary ${mascotVersion === '3d'
+              ? 'bg-red-500 text-white shadow-lg'
               : 'bg-white/90 text-slate-700 hover:bg-white'
-          }`}
+            }`}
         >
           3D
         </button>
@@ -168,27 +166,37 @@ function App() {
           onClick={() => setMascotVersion('both')}
           aria-pressed={mascotVersion === 'both'}
           aria-label="Show both mascots"
-          className={`min-w-[44px] min-h-[44px] px-4 py-2 rounded-lg text-sm font-semibold transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary ${
-            mascotVersion === 'both' 
-              ? 'bg-red-500 text-white shadow-lg' 
+          className={`min-w-[44px] min-h-[44px] px-4 py-2 rounded-lg text-sm font-semibold transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary ${mascotVersion === 'both'
+              ? 'bg-red-500 text-white shadow-lg'
               : 'bg-white/90 text-slate-700 hover:bg-white'
-          }`}
+            }`}
         >
           Both
+        </button>
+        <button
+          onClick={() => setMascotVersion('none')}
+          aria-pressed={mascotVersion === 'none'}
+          aria-label="Hide mascot"
+          className={`min-w-[44px] min-h-[44px] px-4 py-2 rounded-lg text-sm font-semibold transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary ${mascotVersion === 'none'
+              ? 'bg-red-500 text-white shadow-lg'
+              : 'bg-white/90 text-slate-700 hover:bg-white'
+            }`}
+        >
+          Hide
         </button>
       </div>
 
       {/* Mascots */}
       {(mascotVersion === '2d' || mascotVersion === 'both') && (
-        <AnimeMascot2D 
-          mood={mascotMood} 
+        <AnimeMascot2D
+          mood={mascotMood}
           message={mascotVersion === 'both' ? null : mascotMessage}
           position={mascotVersion === 'both' ? 'right' : 'right'}
         />
       )}
       {(mascotVersion === '3d' || mascotVersion === 'both') && (
-        <AnimeMascot3D 
-          mood={mascotMood} 
+        <AnimeMascot3D
+          mood={mascotMood}
           message={mascotVersion === 'both' ? null : mascotMessage}
           position={mascotVersion === 'both' ? 'left' : 'right'}
         />
